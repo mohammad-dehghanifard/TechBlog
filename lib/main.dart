@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_techblog/core/constants/routes/screen_routes.dart';
+import 'package:flutter_techblog/view/home_screen/screen/home_screen.dart';
+import 'package:flutter_techblog/view/splash_screen/screen/splash_screen.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +14,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      locale: const Locale('fa'),
+      initialRoute: ScreenRouts.splashRoute,
+      getPages: [
+        GetPage(name: ScreenRouts.splashRoute, page: () => const SplashScreen()),
+        GetPage(name: ScreenRouts.homeRoute, page: () => const HomeScreen())
+      ],
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -24,7 +34,6 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(),
     );
   }
 }
