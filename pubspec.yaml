@@ -91,6 +91,12 @@ flutter:
     - family: dana
       fonts:
         - asset: assets/fonts/dana-medium.ttf
+          style: normal
+          weight: 500
+
+        - asset: assets/fonts/dana-regular.ttf
+          style: normal
+          weight: 200
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

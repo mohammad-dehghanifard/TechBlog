@@ -11,19 +11,18 @@ class CustomHomeAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        //search btn
-        IconButton(
-            onPressed: searchTap,
-            iconSize: 32,
-            icon: const Icon(Icons.search)),
-        // logo
-        Image.asset(Assets.images.logo.path,height: size.height / 13.6),
         // menu btn
         IconButton(
             onPressed:menuTap,
             iconSize: 32,
             icon: const Icon(Icons.menu)),
-
+        // logo
+        Image.asset(Assets.images.logo.path,height: size.height / 13.6),
+        //search btn
+        IconButton(
+            onPressed: searchTap,
+            iconSize: 32,
+            icon: const Icon(Icons.search)),
       ],
     );
   }
