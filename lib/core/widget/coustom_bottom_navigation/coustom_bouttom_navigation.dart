@@ -6,9 +6,11 @@ class CustomBottomNavigation extends StatelessWidget {
   const CustomBottomNavigation({
     super.key,
     required this.size,
+    required this.changeScreen
   });
 
   final Size size;
+  final Function(int value) changeScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -48,15 +50,15 @@ class CustomBottomNavigation extends StatelessWidget {
               children: [
                 // home icon
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () => changeScreen(0),
                     icon: Image.asset(Assets.icons.homeicon.path)),
                 // write icon
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () => changeScreen(1),
                     icon: Image.asset(Assets.icons.write.path)),
                 // user icon
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () => changeScreen(1),
                     icon: Image.asset(Assets.icons.user.path)),
               ],
             ),

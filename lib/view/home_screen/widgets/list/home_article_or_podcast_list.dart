@@ -28,7 +28,7 @@ class HomeArticleOrPodcastList extends StatelessWidget {
                 children: [
                   //poster
                   Container(
-                    margin: EdgeInsets.fromLTRB(6, 0, index == 0? size.width * 0.07 : 6, 0),
+                    margin: EdgeInsets.fromLTRB(6, 0, index == 0? size.width * 0.07 : 0, 0),
                     width: size.width / 2.6,
                     height: size.height / 5.5,
                     decoration: BoxDecoration(
