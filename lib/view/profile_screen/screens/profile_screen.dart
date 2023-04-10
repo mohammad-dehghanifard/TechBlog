@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
+import 'package:flutter_techblog/core/widget/tech_divider/tech_divider.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
+import 'package:flutter_techblog/view/profile_screen/widgets/user_option_btn/user_option_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -49,43 +51,6 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
-class UserProfileOptionBtn extends StatelessWidget {
-  final String text;
-  const UserProfileOptionBtn({
-    super.key,
-    required this.size,
-    required this.text,
-    required this.onTap
-  });
 
-  final Size size;
-  final Function() onTap;
 
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-        splashColor: SolidColors.colorPrimary,
-        onTap: () {},
-        child: SizedBox(
-          width: size.width,
-            height: size.height * 0.04,
-            child: Center(child: Text(text,style: ApplicationTextStyle.userProfileOption))));
-  }
-}
 
-class TechDivider extends StatelessWidget {
-  final double thickness;
-  const TechDivider({
-    required this.thickness,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-
-    return  Padding(
-      padding: const EdgeInsets.fromLTRB(32,0,32,8),
-      child: Divider(color: SolidColors.techDividerColor,thickness: thickness),
-    );
-  }
-}
