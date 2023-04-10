@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
-import 'package:flutter_techblog/view/home_screen/widgets/app_bar/coustom_app_bar_widget.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list/home_article_or_podcast_list.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list_title/list_title.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/tags_list/tasg_list.dart';
@@ -20,12 +19,6 @@ class HomeScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              // custom app bar
-              CustomHomeAppBar(
-                  size: size,
-                  menuTap: () {},
-                  searchTap: () {},
-              ),
               SizedBox(height: size.height * 0.02),
 
               // main poster
