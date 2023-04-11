@@ -4,4 +4,5 @@ static String homeRoute = '/homeRoute';
 static String mainScreenRoute = '/mainScreenRoute';
 static String profileScreenRoute = '/profileScreenRoute';
 static String registerIntroScreenRoute = '/profileScreenRoute';
+static String articleListScreenRoute = '/articleListScreenRoute';
 }

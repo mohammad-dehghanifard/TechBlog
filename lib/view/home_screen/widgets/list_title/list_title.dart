@@ -7,13 +7,15 @@ class ListTitle extends StatelessWidget {
     required this.bodyMargin,
     required this.size,
     required this.iconPath,
-    required this.titleTxt
+    required this.titleTxt,
+    required this.onTap
   });
 
   final double bodyMargin;
   final Size size;
   final String iconPath;
   final String titleTxt;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +24,11 @@ class ListTitle extends StatelessWidget {
       child: Row(
         children: [
           Image.asset(iconPath,height: size.height * 0.03),
-          SizedBox(width: size.width * 0.04),
-          Text(titleTxt,style: ApplicationTextStyle.listTitle,)
+          SizedBox(width: size.width * 0.02),
+          TextButton(
+            onPressed: onTap,
+            child: Text( titleTxt ,style: ApplicationTextStyle.listTitle,),
+          )
         ],
       ),
     );

@@ -10,5 +10,5 @@ class ApplicationTextStyle{
   static TextStyle registerScreenTxtStyle = TextStyle(fontFamily: defaultFontFamily,fontSize: 14,color: SolidColors.welcomeTxtColor,fontWeight: FontWeight.w500);
   static TextStyle registerScreenBtnTxtStyle = TextStyle(fontFamily: defaultFontFamily,fontSize: 16,color: Colors.white,fontWeight: FontWeight.w700);
   static TextStyle hintTxtTxtStyle = TextStyle(fontFamily: defaultFontFamily,fontSize: 16,color: SolidColors.welcomeTxtColor,fontWeight: FontWeight.w500);
-
+  static TextStyle normalTextStyle = TextStyle(fontFamily: defaultFontFamily,fontSize: 14,color: SolidColors.colorTextTitle,fontWeight: FontWeight.w200);
 }

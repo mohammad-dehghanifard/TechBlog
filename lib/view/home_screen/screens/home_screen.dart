@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
+import 'package:flutter_techblog/core/constants/routes/screen_routes.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list/home_article_or_podcast_list.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list_title/list_title.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/tags_list/tasg_list.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -77,8 +79,9 @@ class HomeScreen extends StatelessWidget {
                   size: size,
                    iconPath: Assets.icons.writeicon.path,
                     titleTxt: "مشاهده داغترین نوشته ها",
+                    onTap: () => Get.toNamed(ScreenRouts.articleListScreenRoute),
               ),
-              SizedBox(height: size.height * 0.02),
+              SizedBox(height: size.height * 0.01),
 
               // the hottest article list
               HomeArticleOrPodcastList(size: size, bodyMargin: bodyMargin),
@@ -90,8 +93,9 @@ class HomeScreen extends StatelessWidget {
                 size: size,
                 iconPath: Assets.icons.podcasticon.path,
                 titleTxt: "مشاهده داغترین پادکست ها",
+                onTap: () {},
               ),
-              SizedBox(height: size.height * 0.02),
+              SizedBox(height: size.height * 0.01),
               // the hottest podcast list
               HomeArticleOrPodcastList(size: size, bodyMargin: bodyMargin),
 
