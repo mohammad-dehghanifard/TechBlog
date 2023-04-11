@@ -54,7 +54,7 @@ class CustomBottomNavigation extends StatelessWidget {
                     icon: Image.asset(Assets.icons.homeicon.path)),
                 // write icon
                 IconButton(
-                    onPressed: () => changeScreen(1),
+                    onPressed: () => changeScreen(2),
                     icon: Image.asset(Assets.icons.write.path)),
                 // user icon
                 IconButton(

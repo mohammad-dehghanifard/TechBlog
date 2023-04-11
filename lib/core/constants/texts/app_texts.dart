@@ -13,6 +13,8 @@ class AppString{
   static const String podcastManagement = "مدیریت پاک دست ها";
   static const String continuation = "ادامه";
   static const String singUp = "بزن بریم";
+  static const String inputEmail = "لطفا ایمیلت رو وارد کن";
+  static const String inputActiveCode = "کد فعال سازی رو وارد کن";
   static const String confirmation = "تایید";
   static const String setImage = "انتخاب تصویر";
   static const String editTitleArticle = "ویرایش عنوان مقاله";

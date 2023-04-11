@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/routes/screen_routes.dart';
 import 'package:flutter_techblog/core/controller_binding/app_controller_binding.dart';
 import 'package:flutter_techblog/view/home_screen/screens/home_screen.dart';
 import 'package:flutter_techblog/view/main_screen/screens/main_screen.dart';
 import 'package:flutter_techblog/view/profile_screen/screens/profile_screen.dart';
+import 'package:flutter_techblog/view/register_screen/screens/register_intro_screen.dart';
 import 'package:flutter_techblog/view/splash_screen/screen/splash_screen.dart';
 import 'package:get/get.dart';
 
@@ -26,9 +28,20 @@ class MyApp extends StatelessWidget {
         GetPage(name: ScreenRouts.homeRoute, page: () => const HomeScreen()),
         GetPage(name: ScreenRouts.mainScreenRoute, page: () =>  MainScreen()),
         GetPage(name: ScreenRouts.profileScreenRoute, page: () => const ProfileScreen()),
+        GetPage(name: ScreenRouts.registerIntroScreenRoute, page: () => const RegisterIntro()),
       ],
       title: 'TechBlog',
       theme: ThemeData(
+        inputDecorationTheme: InputDecorationTheme(
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(width: 1,color: SolidColors.borderColor),
+            borderRadius: BorderRadius.circular(16)
+          ),
+          focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(width: 1,color: SolidColors.borderColor),
+              borderRadius: BorderRadius.circular(16)
+          ),
+        ),
         primarySwatch: Colors.blue,
       ),
     );
