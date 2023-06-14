@@ -13,7 +13,7 @@ class HomeHashTagsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size.height * 0.06,
+      height: size.height * 0.05,
       child: ListView.builder(
         itemCount: 10,
         scrollDirection: Axis.horizontal,
@@ -22,7 +22,7 @@ class HomeHashTagsList extends StatelessWidget {
             margin:  EdgeInsets.fromLTRB(6, 0, index == 0? size.width * 0.07 : 6, 0),
             padding: const EdgeInsets.symmetric(horizontal: 12),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(64),
                 gradient: const LinearGradient(
                     colors: GradiantColor.blackGradiant
                 )

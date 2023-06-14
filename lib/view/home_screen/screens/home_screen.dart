@@ -3,7 +3,8 @@ import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/routes/screen_routes.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
-import 'package:flutter_techblog/view/home_screen/widgets/list/home_article_or_podcast_list.dart';
+import 'package:flutter_techblog/view/articles_screen/screens/list_screen/single_article_screen.dart';
+import 'package:flutter_techblog/view/home_screen/widgets/list_item/home_article_and_podcast_item.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list_title/list_title.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/tags_list/tasg_list.dart';
 import 'package:get/get.dart';
@@ -84,7 +85,16 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: size.height * 0.01),
 
               // the hottest article list
-              HomeArticleOrPodcastList(size: size, bodyMargin: bodyMargin),
+            SizedBox(
+              height: size.height / 4,
+              child: ListView.builder(
+                itemCount: 10,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return HomeArticleAndPodcastItem(size: size, bodyMargin: bodyMargin,index: index, onTap: () { Get.to(const SingleArticleScreen()); },);
+                },
+              ),
+            ),
               SizedBox(height: size.height * 0.03),
 
               // show the hottest podcast title
@@ -97,7 +107,16 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.01),
               // the hottest podcast list
-              HomeArticleOrPodcastList(size: size, bodyMargin: bodyMargin),
+              SizedBox(
+                height: size.height / 4,
+                child: ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return HomeArticleAndPodcastItem(size: size, bodyMargin: bodyMargin,index: index, onTap: () { Get.to(const SingleArticleScreen()); },);
+                  },
+                ),
+              ),
 
               SizedBox(height: size.height * 0.12),
             ],
