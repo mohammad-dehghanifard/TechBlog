@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                   itemCount: 10,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return TagItem(size: size,index: index,gradient: const LinearGradient(colors: GradiantColor.blackGradiant),);
+                    return TagItem(size: size,index: index,gradient: const LinearGradient(colors: GradiantColor.blackGradiant), textColor: SolidColors.colorLightText,);
                   },
                 ),
               ),

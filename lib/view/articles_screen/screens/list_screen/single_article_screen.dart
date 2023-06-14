@@ -3,6 +3,8 @@ import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
+import 'package:flutter_techblog/view/home_screen/widgets/list_item/home_article_and_podcast_item.dart';
+import 'package:flutter_techblog/view/home_screen/widgets/list_title/list_title.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/tags_itme/tag_item.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -94,6 +96,7 @@ class SingleArticleScreen extends StatelessWidget {
                 padding: EdgeInsets.all(bodyMargin),
                 child: Text(AppString.manageArticleContent,style: ApplicationTextStyle.normalTextStyle,textAlign: TextAlign.justify),
               ),
+              SizedBox(height: size.height * 0.04),
 
               //tag list
               SizedBox(
@@ -102,7 +105,31 @@ class SingleArticleScreen extends StatelessWidget {
                   itemCount: 10,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return TagItem(size: size,index: index,gradient: const LinearGradient(colors: GradiantColor.blackGradiant),);
+                    return TagItem(size: size,index: index,color: SolidColors.lightBgTagColor, textColor: SolidColors.colorTextTitle,);
+                  },
+                ),
+              ),
+              SizedBox(height: size.height * 0.04),
+
+              // related article
+              ListTitle(
+                bodyMargin: bodyMargin,
+                size: size,
+                iconPath: Assets.icons.writeicon.path,
+                titleTxt: "مقالات مرتبط",
+                onTap: () {
+
+                },
+              ),
+              SizedBox(height: size.height * 0.01),
+              // related article list
+              SizedBox(
+                height: size.height / 4,
+                child: ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return HomeArticleAndPodcastItem(size: size, bodyMargin: bodyMargin,index: index, onTap: () { Get.to(const SingleArticleScreen()); },);
                   },
                 ),
               ),
