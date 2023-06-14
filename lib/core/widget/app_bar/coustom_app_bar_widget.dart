@@ -35,4 +35,21 @@ class CustomAppBars {
       ],
     );
   }
+
+  static AppBar singleArticleAppBar(){
+    return AppBar(
+      backgroundColor: SolidColors.scaffoldColor,
+      elevation: 0,
+      actions: [
+        SizedBox(
+          width: double.infinity,
+          child: Row(
+            children: [
+              Icon(Icons.chevron_left)
+            ],
+          ),
+        )
+      ],
+    );
+  }
 }

@@ -6,8 +6,9 @@ import 'package:flutter_techblog/gen/assets.gen.dart';
 import 'package:flutter_techblog/view/articles_screen/screens/list_screen/single_article_screen.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list_item/home_article_and_podcast_item.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list_title/list_title.dart';
-import 'package:flutter_techblog/view/home_screen/widgets/tags_list/tasg_list.dart';
 import 'package:get/get.dart';
+
+import '../widgets/tags_itme/tag_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -71,7 +72,16 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: size.height * 0.03),
 
               // tags list
-              HomeHashTagsList(size: size),
+              SizedBox(
+                height: size.height * 0.05,
+                child: ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return TagItem(size: size,index: index,gradient: const LinearGradient(colors: GradiantColor.blackGradiant),);
+                  },
+                ),
+              ),
               SizedBox(height: size.height * 0.03),
 
               // show the hottest article title
