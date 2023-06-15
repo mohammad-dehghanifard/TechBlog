@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_techblog/controller/home_controller/home_controller.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/routes/screen_routes.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
@@ -15,6 +16,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HomeController heroController = Get.find<HomeController>();
     final size = MediaQuery.of(context).size;
     final bodyMargin = size.width * 0.07;
     return Scaffold(
