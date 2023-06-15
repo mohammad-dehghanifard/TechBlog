@@ -1,19 +1,17 @@
-class ArticleModel {
+class PodcastModel {
   final String id;
   final String title;
-  final String image;
-  final String catId;
+  final String poster;
   final String catName;
   final String author;
   final String view;
   final String status;
   final String createdAt;
 
-  ArticleModel({
+  PodcastModel({
     required this.id,
     required this.title,
-    required this.image,
-    required this.catId,
+    required this.poster,
     required this.catName,
     required this.author,
     required this.view,
@@ -21,12 +19,11 @@ class ArticleModel {
     required this.createdAt,
   });
 
-  factory ArticleModel.fromJson(Map<String, dynamic> json) {
-    return ArticleModel(
+  factory PodcastModel.fromJson(Map<String, dynamic> json) {
+    return PodcastModel(
       id: json['id'],
       title: json['title'],
-      image: json['image'],
-      catId: json['cat_id'],
+      poster: json['poster'],
       catName: json['cat_name'],
       author: json['author'],
       view: json['view'],
