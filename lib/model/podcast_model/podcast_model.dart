@@ -1,3 +1,5 @@
+import '../../core/constants/api_url/api_urls.dart';
+
 class PodcastModel {
   final String id;
   final String title;
@@ -21,7 +23,7 @@ class PodcastModel {
     return PodcastModel(
       id: json['id'],
       title: json['title'],
-      poster: json['poster'],
+      poster: ApiUrls.baseWebSiteUrl + json['poster'],
       catName: json['cat_name'],
       view: json['view'],
       status: json['status'],

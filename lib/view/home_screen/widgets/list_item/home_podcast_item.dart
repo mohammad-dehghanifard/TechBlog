@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
-import 'package:flutter_techblog/gen/assets.gen.dart';
+import 'package:flutter_techblog/core/widget/tech_cached_image/tech_cached_image.dart';
+import 'package:flutter_techblog/model/podcast_model/podcast_model.dart';
 
-class HomeArticleAndPodcastItem extends StatelessWidget {
-  const HomeArticleAndPodcastItem({
-    super.key,
-    required this.size,
-    required this.bodyMargin, required this.index, required this.onTap,
-  });
+class HomePodcastItem extends StatelessWidget {
+  const HomePodcastItem({super.key, required this.size, required this.bodyMargin, required this.index, required this.onTap, required this.podcast});
+
+
 
   final Size size;
   final double bodyMargin;
   final int index;
   final Function() onTap;
+  final PodcastModel podcast;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +31,6 @@ class HomeArticleAndPodcastItem extends StatelessWidget {
                 height: size.height / 5.5,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                        image: Image.asset(Assets.images.singleimg.path).image,
-                        fit: BoxFit.cover
-                    )
                 ),
                 foregroundDecoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -44,6 +40,9 @@ class HomeArticleAndPodcastItem extends StatelessWidget {
                         end: Alignment.topCenter
                     )
                 ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                    child: TechCachedImage(imageLink: podcast.poster)),
               ),
               // texts
               Positioned(
@@ -53,12 +52,7 @@ class HomeArticleAndPodcastItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("ملیکا عزیزی",style: ApplicationTextStyle.subtext1.apply(fontSizeFactor: 0.8)),
-                        Text("253 Likes",style: ApplicationTextStyle.subtext1.apply(fontSizeFactor: 0.8)),
-                      ],),
+                    Text("${podcast.view} Likes",style: ApplicationTextStyle.subtext1.apply(fontSizeFactor: 0.8)),
                   ],
                 ),
               )
@@ -70,7 +64,7 @@ class HomeArticleAndPodcastItem extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.fromLTRB(6, 0, index == 0? size.width * 0.08 : 26, 0),
                 child: Text(
-                  "سالیدیتی چیست؛ معرفی زبان معروف برنامه‌نویسی",
+                  podcast.title,
                   style: ApplicationTextStyle.subtext1.apply(color: SolidColors.colorTextTitle),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,

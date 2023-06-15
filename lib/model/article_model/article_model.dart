@@ -1,3 +1,5 @@
+import 'package:flutter_techblog/core/constants/api_url/api_urls.dart';
+
 class ArticleModel {
   final String id;
   final String title;
@@ -25,7 +27,7 @@ class ArticleModel {
     return ArticleModel(
       id: json['id'],
       title: json['title'],
-      image: json['image'],
+      image: ApiUrls.baseWebSiteUrl + json['image'],
       catId: json['cat_id'],
       catName: json['cat_name'],
       author: json['author'],

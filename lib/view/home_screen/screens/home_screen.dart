@@ -7,7 +7,8 @@ import 'package:flutter_techblog/core/widget/loading_widget/loading_widget.dart'
 import 'package:flutter_techblog/core/widget/tech_cached_image/tech_cached_image.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
 import 'package:flutter_techblog/view/articles_screen/screens/list_screen/single_article_screen.dart';
-import 'package:flutter_techblog/view/home_screen/widgets/list_item/home_article_and_podcast_item.dart';
+import 'package:flutter_techblog/view/home_screen/widgets/list_item/home_article_item.dart';
+import 'package:flutter_techblog/view/home_screen/widgets/list_item/home_podcast_item.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list_title/list_title.dart';
 import 'package:get/get.dart';
 import '../widgets/tags_itme/tag_item.dart';
@@ -60,18 +61,11 @@ class HomeScreen extends StatelessWidget {
                           bottom: 10,
                           left: 10,
                           right: 10,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text("ملیکا عزیزی - یک روز پیش",style: ApplicationTextStyle.subtext1),
-                                  Text("253 Likes",style: ApplicationTextStyle.subtext1),
-                                ],),
-                              SizedBox(height: size.height * 0.01),
-                              Text("دوازده قدم برنامه نویسی یک دوره ی....",style: ApplicationTextStyle.subtext1.copyWith(fontWeight: FontWeight.w700,fontSize: 18)),
-                            ],
+                          child: Text(
+                              buildController.homeDataModel!.poster.title,
+                              style: ApplicationTextStyle.subtext1.copyWith(fontWeight: FontWeight.w700,fontSize: 18),
+                              maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         )
                       ],
@@ -82,10 +76,15 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       height: size.height * 0.05,
                       child: ListView.builder(
-                        itemCount: 10,
+                        itemCount: buildController.homeDataModel!.tags.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return TagItem(size: size,index: index,gradient: const LinearGradient(colors: GradiantColor.blackGradiant), textColor: SolidColors.colorLightText,);
+                          final tag = buildController.homeDataModel!.tags[index];
+                          return TagItem(
+                            tag: tag,
+                            size: size,
+                            index: index,
+                            gradient: const LinearGradient(colors: GradiantColor.blackGradiant), textColor: SolidColors.colorLightText,);
                         },
                       ),
                     ),
@@ -105,10 +104,16 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       height: size.height / 4,
                       child: ListView.builder(
-                        itemCount: 10,
+                        itemCount: buildController.homeDataModel!.topVisited.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return HomeArticleAndPodcastItem(size: size, bodyMargin: bodyMargin,index: index, onTap: () { Get.to(const SingleArticleScreen()); },);
+                          final article = buildController.homeDataModel!.topVisited[index];
+                          return HomeArticleItem(
+                            article: article,
+                            size: size,
+                            bodyMargin: bodyMargin,
+                            index: index, onTap: () { Get.to(const SingleArticleScreen());
+                              },);
                         },
                       ),
                     ),
@@ -127,10 +132,16 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       height: size.height / 4,
                       child: ListView.builder(
-                        itemCount: 10,
+                        itemCount: buildController.homeDataModel!.topPodcasts.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return HomeArticleAndPodcastItem(size: size, bodyMargin: bodyMargin,index: index, onTap: () { Get.to(const SingleArticleScreen()); },);
+                          final podcast  = buildController.homeDataModel!.topPodcasts[index];
+                          return HomePodcastItem(
+                            podcast: podcast,
+                            size: size,
+                            bodyMargin: bodyMargin,
+                            index: index,
+                            onTap: () {},);
                         },
                       ),
                     ),
