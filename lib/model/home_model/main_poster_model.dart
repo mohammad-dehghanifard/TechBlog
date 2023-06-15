@@ -1,3 +1,5 @@
+import 'package:flutter_techblog/core/constants/api_url/api_urls.dart';
+
 class HomePosterModel {
   final String id;
   final String title;
@@ -9,7 +11,7 @@ class HomePosterModel {
     return HomePosterModel(
       id: json['id'],
       title: json['title'],
-      image: json['image'],
+      image: ApiUrls.baseWebSiteUrl + json['image'],
     );
   }
 }

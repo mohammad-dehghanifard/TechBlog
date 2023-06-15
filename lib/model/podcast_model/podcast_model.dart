@@ -3,7 +3,6 @@ class PodcastModel {
   final String title;
   final String poster;
   final String catName;
-  final String author;
   final String view;
   final String status;
   final String createdAt;
@@ -13,7 +12,6 @@ class PodcastModel {
     required this.title,
     required this.poster,
     required this.catName,
-    required this.author,
     required this.view,
     required this.status,
     required this.createdAt,
@@ -25,7 +23,6 @@ class PodcastModel {
       title: json['title'],
       poster: json['poster'],
       catName: json['cat_name'],
-      author: json['author'],
       view: json['view'],
       status: json['status'],
       createdAt: json['created_at'],
