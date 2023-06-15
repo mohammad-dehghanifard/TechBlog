@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/routes/screen_routes.dart';
 import 'package:flutter_techblog/core/controller_binding/app_controller_binding.dart';
@@ -11,6 +12,9 @@ import 'package:flutter_techblog/view/splash_screen/screen/splash_screen.dart';
 import 'package:get/get.dart';
 
 void main() {
+  const SystemUiOverlayStyle(
+    statusBarColor: SolidColors.scaffoldColor,
+  );
   runApp(const MyApp());
 }
 
