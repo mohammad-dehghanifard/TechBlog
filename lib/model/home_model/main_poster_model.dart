@@ -1,12 +1,12 @@
-class Poster {
+class HomePosterModel {
   final String id;
   final String title;
   final String image;
 
-  Poster({required this.id, required this.title, required this.image});
+  HomePosterModel({required this.id, required this.title, required this.image});
 
-  factory Poster.fromJson(Map<String, dynamic> json) {
-    return Poster(
+  factory HomePosterModel.fromJson(Map<String, dynamic> json) {
+    return HomePosterModel(
       id: json['id'],
       title: json['title'],
       image: json['image'],
