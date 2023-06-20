@@ -11,6 +11,7 @@ import 'package:get/get_core/src/get_main.dart';
 class SingleArticleScreen extends StatelessWidget {
   const SingleArticleScreen({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
