@@ -10,6 +10,7 @@ class ArticleModel {
   final String view;
   final String status;
   final String createdAt;
+  final String content;
 
   ArticleModel({
     required this.id,
@@ -21,6 +22,7 @@ class ArticleModel {
     required this.view,
     required this.status,
     required this.createdAt,
+    required this.content
   });
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) {
@@ -34,6 +36,7 @@ class ArticleModel {
       view: json['view'],
       status: json['status'],
       createdAt: json['created_at'],
+      content: json['content'] ?? '',
     );
   }
 }
