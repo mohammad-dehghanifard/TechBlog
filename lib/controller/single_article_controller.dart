@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_techblog/core/constants/api_url/api_urls.dart';
 import 'package:flutter_techblog/core/services/web_service.dart';
 import 'package:flutter_techblog/model/article_model/article_model.dart';
@@ -17,7 +15,9 @@ class SingleArticleController extends GetxController{
 //================= functions ==================================================
 
   Future<dynamic> fetchSingleArticleData() async {
-
+    tagList.clear();
+    relatedArticles.clear();
+    // اماده کردن پارامتر ها برای ارسال به سمت سرور
     Map<String,dynamic> params = {
       "command" : "info",
       "id" : articleId,
@@ -27,9 +27,7 @@ class SingleArticleController extends GetxController{
     isLoading = true;
     update();
     final response = await TechWebService.getRequest(url: ApiUrls.singleArticleApi,params: params);
-    log(response.data.toString());
     if(response.statusCode == 200){
-      log(response.data.toString());
       article = ArticleModel.fromJson(response.data['info']);
       // دریافت لیست تگ ها از سرور
       for( var tag in response.data['tags']) {
