@@ -6,12 +6,11 @@ import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/widget/loading_widget/loading_widget.dart';
 import 'package:flutter_techblog/core/widget/tech_cached_image/tech_cached_image.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
-import 'package:flutter_techblog/view/articles_screen/screens/list_screen/single_article_screen.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list_item/home_article_item.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list_item/home_podcast_item.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list_title/list_title.dart';
+import 'package:flutter_techblog/view/home_screen/widgets/tags_item/tag_item.dart';
 import 'package:get/get.dart';
-import '../widgets/tags_itme/tag_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -38,23 +37,28 @@ class HomeScreen extends StatelessWidget {
                     Stack(
                       children: [
                         // poster
-                        Container(
-                          width: size.width / 1.19,
-                          height: size.height / 4.2,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(24),
-                          ),
-                          foregroundDecoration: BoxDecoration(
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed(ScreenRouts.singleArticleScreenRoute,arguments: buildController.homeDataModel!.poster.id);
+                          },
+                          child: Container(
+                            width: size.width / 1.19,
+                            height: size.height / 4.2,
+                            decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(24),
-                              gradient: const LinearGradient(
-                                  colors: GradiantColor.mainPosterGradiant,
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter
-                              )
+                            ),
+                            foregroundDecoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(24),
+                                gradient: const LinearGradient(
+                                    colors: GradiantColor.mainPosterGradiant,
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter
+                                )
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16),
+                                child: TechCachedImage(imageLink: buildController.homeDataModel!.poster.image)),
                           ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(16),
-                              child: TechCachedImage(imageLink: buildController.homeDataModel!.poster.image)),
                         ),
                         // texts
                         Positioned(
@@ -112,8 +116,9 @@ class HomeScreen extends StatelessWidget {
                             article: article,
                             size: size,
                             bodyMargin: bodyMargin,
-                            index: index, onTap: () { Get.to(const SingleArticleScreen());
-                              },);
+                            index: index,
+                            onTap: () => Get.toNamed(ScreenRouts.singleArticleScreenRoute,arguments: article.id),
+                          );
                         },
                       ),
                     ),

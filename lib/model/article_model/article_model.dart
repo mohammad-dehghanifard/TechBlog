@@ -32,7 +32,7 @@ class ArticleModel {
       image: ApiUrls.baseWebSiteUrl + json['image'],
       catId: json['cat_id'],
       catName: json['cat_name'],
-      author: json['author'],
+      author: json['author'] ?? '',
       view: json['view'],
       status: json['status'],
       createdAt: json['created_at'],

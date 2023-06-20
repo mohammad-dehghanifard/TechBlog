@@ -1,16 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_techblog/controller/single_article_controller.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
+import 'package:flutter_techblog/core/constants/routes/screen_routes.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
-import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
+import 'package:flutter_techblog/core/widget/loading_widget/loading_widget.dart';
+import 'package:flutter_techblog/core/widget/tech_cached_image/tech_cached_image.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list_item/home_article_item.dart';
 import 'package:flutter_techblog/view/home_screen/widgets/list_title/list_title.dart';
+import 'package:flutter_techblog/view/home_screen/widgets/tags_item/tag_item.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-class SingleArticleScreen extends StatelessWidget {
+class SingleArticleScreen extends StatefulWidget {
   const SingleArticleScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SingleArticleScreen> createState() => _SingleArticleScreenState();
+}
+
+class _SingleArticleScreenState extends State<SingleArticleScreen> {
+  final SingleArticleController articleController = Get.find<SingleArticleController>();
+  @override
+  void initState() {
+    articleController.articleId = Get.arguments;
+    articleController.fetchSingleArticleData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,124 +33,141 @@ class SingleArticleScreen extends StatelessWidget {
     final bodyMargin = size.width * 0.02;
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // main poster
-             SizedBox(
-               width: size.width,
-               height: size.height / 3,
-               child:  Stack(
+        child: GetBuilder<SingleArticleController>(
+          builder: (buildController) {
+           if(buildController.isLoading){
+             return const ApplicationLoading();
+           }else{
+             return SingleChildScrollView(
+               physics: const BouncingScrollPhysics(),
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
-                   // article poster
-                   Image.asset(Assets.images.singleimg.path),
-                   // gradiant
-                   Container(
+                   // main poster
+                   SizedBox(
                      width: size.width,
-                     height: size.height / 13,
-                     decoration: const BoxDecoration(
-                     gradient: LinearGradient(
-                       colors: GradiantColor.singlePageAppbarGradiant,
-                       begin: Alignment.topCenter,
-                       end: Alignment.bottomCenter
-                     )
-                      ),
+                     height: size.height / 3,
+                     child:  Stack(
+                       children: [
+                         // article poster
+                         TechCachedImage(imageLink: buildController.article!.image),
+                         // gradiant
+                         Container(
+                           width: size.width,
+                           height: size.height / 13,
+                           decoration: const BoxDecoration(
+                               gradient: LinearGradient(
+                                   colors: GradiantColor.singlePageAppbarGradiant,
+                                   begin: Alignment.topCenter,
+                                   end: Alignment.bottomCenter
+                               )
+                           ),
+                         ),
+
+                         Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                           children: [
+                             // book mark and share icon
+                             IconButton(
+                                 onPressed: () {},
+                                 icon: const Icon(Icons.share,color: Colors.white,)),
+                             IconButton(
+                                 onPressed: () {},
+                                 icon: const Icon(Icons.bookmark_border,color: Colors.white,)),
+
+                             const Expanded(child: SizedBox()),
+                             // back icon
+                             IconButton(
+                                 onPressed: () {Get.back();},
+                                 icon: const Icon(Icons.arrow_forward,color: Colors.white,)),
+
+                           ],
+                         )
+                       ],
+                     ),
                    ),
 
-                   Row(
-                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                     children: [
-                       // book mark and share icon
-                       IconButton(
-                           onPressed: () {},
-                           icon: const Icon(Icons.share,color: Colors.white,)),
-                       IconButton(
-                           onPressed: () {},
-                           icon: const Icon(Icons.bookmark_border,color: Colors.white,)),
+                   // article title
+                   Padding(
+                     padding:  EdgeInsets.all(bodyMargin),
+                     child: Text(
+                       buildController.article!.title,
+                       maxLines: 2,
+                       style: ApplicationTextStyle.singlePageTitleTextStyle,
+                     ),
+                   ),
 
-                       const Expanded(child: SizedBox()),
-                       // back icon
-                       IconButton(
-                           onPressed: () {Get.back();},
-                           icon: const Icon(Icons.arrow_forward,color: Colors.white,)),
+                   // writer information
+                   Padding(
+                     padding: EdgeInsets.all(bodyMargin),
+                     child: Row(
+                       children: [
+                         Image.asset(Assets.images.profileavatar.path,height: size.height * 0.06),
+                         SizedBox(width: size.width * 0.04),
+                         Text(buildController.article!.author,style: ApplicationTextStyle.normalTextStyle),
+                         SizedBox(width: size.width * 0.24),
+                         Text("بازدید ${buildController.article!.view}",style: ApplicationTextStyle.hintTxtTxtStyle.copyWith(fontSize: 12))
+                       ],
+                     ),
+                   ),
 
-                     ],
-                   )
+                   //article content
+                   Padding(
+                     padding: EdgeInsets.all(bodyMargin),
+                     child: Text(buildController.article!.content,style: ApplicationTextStyle.normalTextStyle,textAlign: TextAlign.justify),
+                   ),
+                   SizedBox(height: size.height * 0.04),
+                   //tag list
+                   SizedBox(
+                     height: size.height * 0.05,
+                     child: ListView.builder(
+                       itemCount: buildController.tagList.length,
+                       scrollDirection: Axis.horizontal,
+                       itemBuilder: (context, index) {
+                         final tag = buildController.tagList[index];
+                         return TagItem(size: size,
+                           index: index,
+                           color: SolidColors.lightBgTagColor,
+                           textColor: SolidColors.colorTextTitle,
+                           tag: tag,);
+                       },
+                     ),
+                   ),
+                   SizedBox(height: size.height * 0.04),
+
+                   // related article
+                   ListTitle(
+                     bodyMargin: bodyMargin,
+                     size: size,
+                     iconPath: Assets.icons.writeicon.path,
+                     titleTxt: "مقالات مرتبط",
+                     onTap: () {},
+                   ),
+                   SizedBox(height: size.height * 0.01),
+                   // related article list
+                   SizedBox(
+                     height: size.height / 4,
+                     child: ListView.builder(
+                       itemCount: buildController.relatedArticles.length,
+                       scrollDirection: Axis.horizontal,
+                       itemBuilder: (context, index) {
+                         final article = buildController.relatedArticles[index];
+                         return HomeArticleItem(
+                           article: article,
+                           size: size,
+                           bodyMargin: bodyMargin,
+                           index: index,
+                           onTap: () {
+                             Get.toNamed(ScreenRouts.singleArticleScreenRoute,arguments: article.id);
+                           },);
+                       },
+                     ),
+                   ),
                  ],
                ),
-             ),
-
-              // article title
-              Padding(
-                padding:  EdgeInsets.all(bodyMargin),
-                child: Text(
-                    'رازهای اساسینز کرید والهالا؛ از هری پاتر و ارباب حلقه‌ها تا دارک سولز',
-                    maxLines: 2,
-                  style: ApplicationTextStyle.singlePageTitleTextStyle,
-                ),
-              ),
-
-              // writer information
-              Padding(
-                padding: EdgeInsets.all(bodyMargin),
-                child: Row(
-                  children: [
-                    Image.asset(Assets.images.profileavatar.path,height: size.height * 0.06),
-                    SizedBox(width: size.width * 0.04),
-                    Text("فاطمه امیری",style: ApplicationTextStyle.normalTextStyle),
-                    SizedBox(width: size.width * 0.24),
-                    Text("2 روز پیش",style: ApplicationTextStyle.hintTxtTxtStyle.copyWith(fontSize: 12))
-                  ],
-                ),
-              ),
-
-              //article content
-              Padding(
-                padding: EdgeInsets.all(bodyMargin),
-                child: Text(AppString.manageArticleContent,style: ApplicationTextStyle.normalTextStyle,textAlign: TextAlign.justify),
-              ),
-              SizedBox(height: size.height * 0.04),
-              // ToDo : وقتی به این صفحه رسیدم باید تکمیلش کنم
-              //tag list
-              // SizedBox(
-              //   height: size.height * 0.05,
-              //   child: ListView.builder(
-              //     itemCount: 10,
-              //     scrollDirection: Axis.horizontal,
-              //     itemBuilder: (context, index) {
-              //       return TagItem(size: size,index: index,color: SolidColors.lightBgTagColor, textColor: SolidColors.colorTextTitle,);
-              //     },
-              //   ),
-              // ),
-              SizedBox(height: size.height * 0.04),
-
-              // related article
-              ListTitle(
-                bodyMargin: bodyMargin,
-                size: size,
-                iconPath: Assets.icons.writeicon.path,
-                titleTxt: "مقالات مرتبط",
-                onTap: () {
-
-                },
-              ),
-              SizedBox(height: size.height * 0.01),
-              // related article list
-              SizedBox(
-                height: size.height / 4,
-                child: ListView.builder(
-                  itemCount: 10,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return HomeArticleItem(article: null,size: size, bodyMargin: bodyMargin,index: index, onTap: () { Get.to(const SingleArticleScreen()); },);
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
+             );
+           }
+          }),
       ),
     );
   }

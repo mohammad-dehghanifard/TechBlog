@@ -11,7 +11,7 @@ class ControllerBinding extends Bindings{
     // home controller
     Get.lazyPut(() => HomeController());
     // single article controller
-    Get.lazyPut(() => SingleArticleController());
+    Get.put(SingleArticleController());
   }
 
 }
