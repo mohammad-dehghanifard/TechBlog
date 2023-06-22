@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_techblog/controller/register_controller/register_controller.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
+import 'package:flutter_techblog/core/widget/loading_widget/loading_widget.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
@@ -8,7 +10,7 @@ import '../btn/register_btn_widget.dart';
 import 'verify_code_bottom_sheet.dart';
 
 Future<dynamic> registerBottomSheet({ required BuildContext context, required Size size}) {
-
+  final RegisterController registerController = Get.find<RegisterController>();
   return showModalBottomSheet(
     context: context,
     backgroundColor: Colors.transparent,
@@ -28,6 +30,7 @@ Future<dynamic> registerBottomSheet({ required BuildContext context, required Si
               Text(AppString.inputEmail,style: ApplicationTextStyle.registerScreenTxtStyle,textAlign: TextAlign.center),
               SizedBox(height: size.height * 0.03),
               TextField(
+                controller: registerController.inputUserEmailController,
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                     hintStyle: ApplicationTextStyle.hintTxtTxtStyle,
@@ -36,10 +39,24 @@ Future<dynamic> registerBottomSheet({ required BuildContext context, required Si
               ),
               SizedBox(height: size.height * 0.06),
               // active user
-              RegisterBtn(size: size, text: "ادامه", onTap: () {
-                Get.back();
-                verifyCodeBottomSheet(context: context,size: size);
-              }
+              GetBuilder<RegisterController>(
+                builder: (builderController) {
+                  if(builderController.isLoading){
+                    return const ApplicationLoading();
+                  }else{
+                    return RegisterBtn(
+                        size: size,
+                        text: "ادامه",
+                        onTap: () async {
+                          if(builderController.inputUserEmailController.text.isNotEmpty){
+                           await builderController.sendOtpEmail();
+                           Get.back();
+                           verifyCodeBottomSheet(context: context,size: size);
+                          }
+                        }
+                    );
+                  }
+                }
               )
             ],
           )

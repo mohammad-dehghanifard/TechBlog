@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' as web_service;
 
 class TechWebService{
   TechWebService._();
@@ -14,10 +15,10 @@ class TechWebService{
 
 
   static Future<dynamic>postRequest({required String url,required Map<String,dynamic> data}) async {
-    dio.options.headers['content-Type'] = 'application/json';
+    dio.options.headers['content-Type'] = 'application/json; charset=utf-8';
     return await dio.post(
         url,
-        data: data,
+        data: web_service.FormData.fromMap(data),
         options: Options(responseType: ResponseType.json,method: 'Post')
     );
   }

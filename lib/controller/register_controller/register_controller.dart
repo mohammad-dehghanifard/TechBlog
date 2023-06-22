@@ -26,17 +26,11 @@ Future<dynamic> sendOtpEmail() async {
   if(response.statusCode == 200){
     log(response.data['user_id'].toString());
     userId = response.data['user_id'];
-    isLoading = false;
-    update();
   }
+  isLoading = false;
+  update();
   log(response.data.toString());
 }
-
-
-
-
-
-
 
 
 }
