@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_techblog/controller/register_controller/register_controller.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
+import 'package:flutter_techblog/core/widget/loading_widget/loading_widget.dart';
 import 'package:flutter_techblog/view/register_screen/widgets/btn/register_btn_widget.dart';
 import 'package:get/get.dart';
 
@@ -26,6 +27,7 @@ Future<dynamic> verifyCodeBottomSheet({ required BuildContext context, required 
               Text(AppString.inputActiveCode,style: ApplicationTextStyle.registerScreenTxtStyle,textAlign: TextAlign.center),
               SizedBox(height: size.height * 0.03),
               TextField(
+                controller: registerController.inputUserVerifyCodeController,
                 textAlign: TextAlign.center,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
@@ -34,8 +36,20 @@ Future<dynamic> verifyCodeBottomSheet({ required BuildContext context, required 
                 ),
               ),
               SizedBox(height: size.height * 0.06),
-              RegisterBtn(size: size, text: "ادامه", onTap: () => Get.back()
-              )
+              GetBuilder<RegisterController>(
+                builder: (builderController) {
+                  if(builderController.isLoading){
+                    return const ApplicationLoading();
+                  }else{
+                    return RegisterBtn(
+                        size: size,
+                        text: "ادامه",
+                        onTap: () => builderController.verifyCode()
+                    );
+                  }
+                },
+                ),
+
             ],
           )
       );
