@@ -19,28 +19,23 @@ class RegisterIntro extends StatelessWidget {
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-
           children: [
-            SvgPicture.asset(Assets.images.techbot,height: 128),
+            SvgPicture.asset(Assets.images.techbot, height: 128),
             SizedBox(height: size.height * 0.02),
-            Text(AppString.welcomeTxt,style: ApplicationTextStyle.registerScreenTxtStyle,textAlign: TextAlign.center),
+            Text(AppString.welcomeTxt,
+                style: ApplicationTextStyle.registerScreenTxtStyle,
+                textAlign: TextAlign.center),
             SizedBox(height: size.height * 0.06),
             RegisterBtn(
                 size: size,
                 text: AppString.singUp,
                 onTap: () {
                   // input email
-                  registerBottomSheet(
-                      context: context,
-                      size: size,);
-                }
-            )
+                  registerBottomSheet(context: context, size: size,);
+                })
           ],
         ),
       ),
     );
   }
-
 }
-
-
