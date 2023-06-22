@@ -11,11 +11,13 @@ import 'package:flutter_techblog/view/profile_screen/screens/profile_screen.dart
 import 'package:flutter_techblog/view/register_screen/screens/register_intro_screen.dart';
 import 'package:flutter_techblog/view/splash_screen/screen/splash_screen.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
+void main() async {
   const SystemUiOverlayStyle(
     statusBarColor: SolidColors.scaffoldColor,
   );
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
