@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_techblog/controller/register_controller/register_controller.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
 import 'package:flutter_techblog/view/register_screen/widgets/btn/register_btn_widget.dart';
 import 'package:get/get.dart';
 
 Future<dynamic> verifyCodeBottomSheet({ required BuildContext context, required Size size}) {
+  final RegisterController registerController = Get.find<RegisterController>();
   return showModalBottomSheet(
     context: context,
     backgroundColor: Colors.transparent,
