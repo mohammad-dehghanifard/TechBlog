@@ -11,4 +11,17 @@ class TechWebService{
       options: Options(responseType: ResponseType.json,method: 'GET')
     );
   }
+
+
+  static Future<dynamic>postRequest({required String url,required Map<String,dynamic> data}) async {
+    dio.options.headers['content-Type'] = 'application/json';
+    return await dio.post(
+        url,
+        data: data,
+        options: Options(responseType: ResponseType.json,method: 'Post')
+    );
+  }
+
+
+
 }
