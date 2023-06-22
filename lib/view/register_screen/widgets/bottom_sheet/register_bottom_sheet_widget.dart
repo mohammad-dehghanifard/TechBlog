@@ -8,6 +8,7 @@ import '../btn/register_btn_widget.dart';
 import 'verify_code_bottom_sheet.dart';
 
 Future<dynamic> registerBottomSheet({ required BuildContext context, required Size size}) {
+
   return showModalBottomSheet(
     context: context,
     backgroundColor: Colors.transparent,
