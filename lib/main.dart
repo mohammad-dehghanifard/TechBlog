@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: ScreenRouts.splashRoute, page: () => const SplashScreen()),
         GetPage(name: ScreenRouts.homeRoute, page: () => const HomeScreen()),
         GetPage(name: ScreenRouts.mainScreenRoute, page: () =>  MainScreen()),
-        GetPage(name: ScreenRouts.profileScreenRoute, page: () => const ProfileScreen()),
+        GetPage(name: ScreenRouts.profileScreenRoute, page: () =>  ProfileScreen()),
         GetPage(name: ScreenRouts.registerIntroScreenRoute, page: () => const RegisterIntro()),
         GetPage(name: ScreenRouts.articleListScreenRoute, page: () => const ArticleListScreen()),
         GetPage(name: ScreenRouts.singleArticleScreenRoute, page: () => const SingleArticleScreen()),

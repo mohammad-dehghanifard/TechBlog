@@ -6,5 +6,5 @@ import 'package:get/get.dart';
 
 class NavigationController extends GetxController{
   RxInt selectedPage = 0.obs;
-  List<Widget> techScreens = [const HomeScreen(),const ProfileScreen(),const RegisterIntro()];
+  List<Widget> techScreens = [const HomeScreen(), ProfileScreen(),const RegisterIntro()];
 }
