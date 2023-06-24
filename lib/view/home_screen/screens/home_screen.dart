@@ -112,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           final article = buildController.homeDataModel!.topVisited[index];
-                          return HomeArticleItem(
+                          return ArticleListItem(
                             article: article,
                             size: size,
                             bodyMargin: bodyMargin,

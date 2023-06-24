@@ -4,8 +4,8 @@ import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/widget/tech_cached_image/tech_cached_image.dart';
 import 'package:flutter_techblog/model/article_model/article_model.dart';
 
-class HomeArticleItem extends StatelessWidget {
-  const HomeArticleItem({
+class ArticleListItem extends StatelessWidget {
+  const ArticleListItem({
     super.key,
     required this.size,
     required this.bodyMargin, required this.index, required this.onTap, required this.article,

@@ -4,13 +4,14 @@ import 'package:flutter_techblog/model/article_model/article_model.dart';
 import 'package:flutter_techblog/model/tag_model/tag_modle.dart';
 import 'package:get/get.dart';
 
-class SingleArticleController extends GetxController{
+class ArticleController extends GetxController{
 //================= variables ==================================================
   ArticleModel? article;
   String? articleId;
   bool isLoading = false;
   List<TagModel> tagList = [];
   List<ArticleModel> relatedArticles = [];
+  List<ArticleModel> allArticles = [];
 
 //================= functions ==================================================
 
@@ -36,6 +37,23 @@ class SingleArticleController extends GetxController{
       //دریافت لیست مقالات از سرور
       for( var article in response.data['related']) {
         relatedArticles.add(ArticleModel.fromJson(article));
+      }
+      isLoading = false;
+      update();
+    }
+  }
+
+  Future<dynamic> fetchAllArticleList() async {
+    isLoading = true;
+    update();
+
+    Map<String,dynamic> params = {
+      "command" : "new",
+    };
+    final  response = await TechWebService.getRequest(url: ApiUrls.getAllArticleApi,params: params);
+    if(response.statusCode == 200){
+      for(var article in response.data){
+        allArticles.add(article);
       }
       isLoading = false;
       update();

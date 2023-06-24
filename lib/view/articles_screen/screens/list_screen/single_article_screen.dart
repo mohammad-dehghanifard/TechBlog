@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_techblog/controller/single_article_controller.dart';
+import 'package:flutter_techblog/controller/article_controller/article_controller.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/routes/screen_routes.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
@@ -19,7 +19,7 @@ class SingleArticleScreen extends StatefulWidget {
 }
 
 class _SingleArticleScreenState extends State<SingleArticleScreen> {
-  final SingleArticleController articleController = Get.find<SingleArticleController>();
+  final ArticleController articleController = Get.find<ArticleController>();
   @override
   void initState() {
     articleController.articleId = Get.arguments;
@@ -33,7 +33,7 @@ class _SingleArticleScreenState extends State<SingleArticleScreen> {
     final bodyMargin = size.width * 0.02;
     return Scaffold(
       body: SafeArea(
-        child: GetBuilder<SingleArticleController>(
+        child: GetBuilder<ArticleController>(
           builder: (buildController) {
            if(buildController.isLoading){
              return const ApplicationLoading();
@@ -152,7 +152,7 @@ class _SingleArticleScreenState extends State<SingleArticleScreen> {
                        scrollDirection: Axis.horizontal,
                        itemBuilder: (context, index) {
                          final article = buildController.relatedArticles[index];
-                         return HomeArticleItem(
+                         return ArticleListItem(
                            article: article,
                            size: size,
                            bodyMargin: bodyMargin,
