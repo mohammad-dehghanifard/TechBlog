@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_techblog/core/constants/api_url/api_urls.dart';
 import 'package:flutter_techblog/core/services/web_service.dart';
 import 'package:flutter_techblog/model/article_model/article_model.dart';
@@ -51,9 +53,10 @@ class ArticleController extends GetxController{
       "command" : "new",
     };
     final  response = await TechWebService.getRequest(url: ApiUrls.getAllArticleApi,params: params);
+    log(response.data.toString());
     if(response.statusCode == 200){
       for(var article in response.data){
-        allArticles.add(article);
+        allArticles.add(ArticleModel.fromJson(article));
       }
       isLoading = false;
       update();
