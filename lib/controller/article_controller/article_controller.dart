@@ -40,6 +40,7 @@ class ArticleController extends GetxController{
       for( var article in response.data['related']) {
         relatedArticles.add(ArticleModel.fromJson(article));
       }
+      articleId = '';
       isLoading = false;
       update();
     }
