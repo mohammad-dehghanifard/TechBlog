@@ -8,7 +8,8 @@ class VerticalArticleListItem extends StatelessWidget {
   const VerticalArticleListItem({
     super.key,
     required this.size,
-    required this.onTap, required this.article,
+    required this.onTap,
+    required this.article,
   });
 
   final Size size;

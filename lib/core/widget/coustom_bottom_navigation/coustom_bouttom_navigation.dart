@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
+import 'package:flutter_techblog/core/constants/storage_keys/storage_keys.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
+import 'package:get_storage/get_storage.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
   const CustomBottomNavigation({
@@ -54,7 +58,15 @@ class CustomBottomNavigation extends StatelessWidget {
                     icon: Image.asset(Assets.icons.homeicon.path)),
                 // write icon
                 IconButton(
-                    onPressed: () => changeScreen(2),
+                    onPressed: () {
+                      final box = GetStorage();
+                      if(box.read(TechStorageKeys.tokenKey) == null){
+                        changeScreen(2);
+                      }else{
+                        log("true");
+                      }
+
+                    },
                     icon: Image.asset(Assets.icons.write.path)),
                 // user icon
                 IconButton(

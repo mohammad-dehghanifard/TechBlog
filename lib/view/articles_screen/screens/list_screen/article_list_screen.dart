@@ -44,6 +44,7 @@ class _ArticleListScreenState extends State<ArticleListScreen> {
                return VerticalArticleListItem(
                    article: article,
                    size: size,
+                   // Todo : بخش رفتن به صفحه سینگل باگ داره و صفحه ریبیلد نمیشه
                    onTap: () => Get.toNamed(ScreenRouts.singleArticleScreenRoute,arguments: article.id)
                );
              },
