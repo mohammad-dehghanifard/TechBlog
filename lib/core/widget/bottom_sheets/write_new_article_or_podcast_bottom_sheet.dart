@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_techblog/core/constants/routes/screen_routes.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
 import 'package:flutter_techblog/core/widget/tech_button/tech_icon_text_button.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 Future<dynamic> writeNewArticleOrPodcastBottomSheet(BuildContext context) {
   return showModalBottomSheet(
@@ -39,7 +42,7 @@ Future<dynamic> writeNewArticleOrPodcastBottomSheet(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TechIconTextButton(
-                  onTap: () {},
+                  onTap: () => Get.toNamed(ScreenRouts.manageArticleScreenRoute),
                   title: AppString.articlesManagement,
                   iconPath: Assets.icons.articleicon.path,
                 ),

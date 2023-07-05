@@ -24,36 +24,38 @@ Future<dynamic> verifyCodeBottomSheet({ required BuildContext context, required 
           ),
           child:  Padding(
             padding:  EdgeInsets.fromLTRB(16,0,16,MediaQuery.of(context).viewInsets.bottom),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(AppString.inputActiveCode,style: ApplicationTextStyle.registerScreenTxtStyle,textAlign: TextAlign.center),
-                SizedBox(height: size.height * 0.03),
-                TextField(
-                  controller: registerController.inputUserVerifyCodeController,
-                  textAlign: TextAlign.center,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                      hintStyle: ApplicationTextStyle.hintTxtTxtStyle,
-                      hintText: '******'
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(AppString.inputActiveCode,style: ApplicationTextStyle.registerScreenTxtStyle,textAlign: TextAlign.center),
+                  SizedBox(height: size.height * 0.03),
+                  TextField(
+                    controller: registerController.inputUserVerifyCodeController,
+                    textAlign: TextAlign.center,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                        hintStyle: ApplicationTextStyle.hintTxtTxtStyle,
+                        hintText: '******'
+                    ),
                   ),
-                ),
-                SizedBox(height: size.height * 0.06),
-                GetBuilder<RegisterController>(
-                  builder: (builderController) {
-                    if(builderController.isLoading){
-                      return const ApplicationLoading();
-                    }else{
-                      return RegisterBtn(
-                          size: size,
-                          text: "ادامه",
-                          onTap: () => builderController.verifyCode()
-                      );
-                    }
-                  },
-                  ),
+                  SizedBox(height: size.height * 0.06),
+                  GetBuilder<RegisterController>(
+                    builder: (builderController) {
+                      if(builderController.isLoading){
+                        return const ApplicationLoading();
+                      }else{
+                        return RegisterBtn(
+                            size: size,
+                            text: "ادامه",
+                            onTap: () => builderController.verifyCode()
+                        );
+                      }
+                    },
+                    ),
 
-              ],
+                ],
+              ),
             ),
           )
       );
