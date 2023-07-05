@@ -6,7 +6,7 @@ import 'package:flutter_techblog/core/widget/loading_widget/loading_widget.dart'
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import '../btn/register_btn_widget.dart';
+import '../../../../core/widget/tech_button/tech_main_btn_widget.dart';
 import 'verify_code_bottom_sheet.dart';
 
 Future<dynamic> registerBottomSheet({ required BuildContext context, required Size size}) {
@@ -48,7 +48,7 @@ Future<dynamic> registerBottomSheet({ required BuildContext context, required Si
                       if(builderController.isLoading){
                         return const ApplicationLoading();
                       }else{
-                        return RegisterBtn(
+                        return TechButton(
                             size: size,
                             text: "ادامه",
                             onTap: () async {

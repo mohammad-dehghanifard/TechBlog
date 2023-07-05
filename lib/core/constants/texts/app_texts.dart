@@ -21,6 +21,7 @@ class AppString{
   static const String editTextArticle = "ویرایش متن اصلی مقاله";
   static const String srtCategory = "انتخاب دسته بندی";
   static const String editProfile = "ویرایش عکس پروفایل";
+  static const String manageArticle = "مدیریت مقالات";
   static const String selectedCategory = "دسته بندی هایی که دوست داری رو انتخاب کن";
   static const String writeBottomSheetTitle = "دونسته هات رو با بقیه به اشتراک بذار ...";
   static const String writeArticleBottomSheetTitle = "مدیریت مقاله ها";

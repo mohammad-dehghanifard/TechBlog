@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 
-class RegisterBtn extends StatelessWidget {
-  const RegisterBtn({
+class TechButton extends StatelessWidget {
+  const TechButton({
     super.key,
     required this.size,
     required this.text,

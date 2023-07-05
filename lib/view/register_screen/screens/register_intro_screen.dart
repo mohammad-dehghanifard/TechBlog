@@ -5,7 +5,7 @@ import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
 import 'package:flutter_techblog/view/register_screen/widgets/bottom_sheet/register_bottom_sheet_widget.dart';
-import 'package:flutter_techblog/view/register_screen/widgets/btn/register_btn_widget.dart';
+import 'package:flutter_techblog/core/widget/tech_button/tech_main_btn_widget.dart';
 
 class RegisterIntro extends StatelessWidget {
   const RegisterIntro({Key? key}) : super(key: key);
@@ -26,7 +26,7 @@ class RegisterIntro extends StatelessWidget {
                 style: ApplicationTextStyle.registerScreenTxtStyle,
                 textAlign: TextAlign.center),
             SizedBox(height: size.height * 0.06),
-            RegisterBtn(
+            TechButton(
                 size: size,
                 text: AppString.singUp,
                 onTap: () {

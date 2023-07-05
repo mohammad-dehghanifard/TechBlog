@@ -3,7 +3,7 @@ import 'package:flutter_techblog/controller/register_controller/register_control
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
 import 'package:flutter_techblog/core/widget/loading_widget/loading_widget.dart';
-import 'package:flutter_techblog/view/register_screen/widgets/btn/register_btn_widget.dart';
+import 'package:flutter_techblog/core/widget/tech_button/tech_main_btn_widget.dart';
 import 'package:get/get.dart';
 
 Future<dynamic> verifyCodeBottomSheet({ required BuildContext context, required Size size}) {
@@ -45,7 +45,7 @@ Future<dynamic> verifyCodeBottomSheet({ required BuildContext context, required 
                       if(builderController.isLoading){
                         return const ApplicationLoading();
                       }else{
-                        return RegisterBtn(
+                        return TechButton(
                             size: size,
                             text: "ادامه",
                             onTap: () => builderController.verifyCode()
