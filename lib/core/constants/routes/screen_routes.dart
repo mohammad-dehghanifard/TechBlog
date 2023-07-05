@@ -7,4 +7,5 @@ static String registerIntroScreenRoute = '/profileScreenRoute';
 static String articleListScreenRoute = '/articleListScreenRoute';
 static String singleArticleScreenRoute = '/singleArticleScreenRoute';
 static String manageArticleScreenRoute = '/manageArticleScreen';
+static String writeNewArticleScreenRoute = '/writeNewArticleScreenRoute';
 }

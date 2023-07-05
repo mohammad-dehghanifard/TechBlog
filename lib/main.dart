@@ -6,6 +6,7 @@ import 'package:flutter_techblog/core/controller_binding/app_controller_binding.
 import 'package:flutter_techblog/view/articles_screen/screens/article_list_screen.dart';
 import 'package:flutter_techblog/view/articles_screen/screens/manage_atricle.dart';
 import 'package:flutter_techblog/view/articles_screen/screens/single_article_screen.dart';
+import 'package:flutter_techblog/view/articles_screen/screens/write_new_article_screen.dart';
 import 'package:flutter_techblog/view/home_screen/screens/home_screen.dart';
 import 'package:flutter_techblog/view/main_screen/screens/main_screen.dart';
 import 'package:flutter_techblog/view/profile_screen/screens/profile_screen.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: ScreenRouts.articleListScreenRoute, page: () => const ArticleListScreen()),
         GetPage(name: ScreenRouts.singleArticleScreenRoute, page: () => const SingleArticleScreen()),
         GetPage(name: ScreenRouts.manageArticleScreenRoute, page: () => const ManageArticleScreen()),
+        GetPage(name: ScreenRouts.writeNewArticleScreenRoute, page: () => const WriteNewArticleScreen()),
       ],
       title: 'TechBlog',
       theme: ThemeData(
