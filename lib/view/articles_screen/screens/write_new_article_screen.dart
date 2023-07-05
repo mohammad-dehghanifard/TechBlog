@@ -3,9 +3,9 @@ import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
 import 'package:flutter_techblog/core/widget/tech_cached_image/tech_cached_image.dart';
+import 'package:flutter_techblog/gen/assets.gen.dart';
+import 'package:flutter_techblog/view/articles_screen/widgets/title_btn.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../widgets/select_image_btn.dart';
 
 class WriteNewArticleScreen extends StatelessWidget {
@@ -23,7 +23,7 @@ class WriteNewArticleScreen extends StatelessWidget {
             children: [
               SizedBox(
                 width: size.width,
-                height: size.height / 3,
+                height: size.height,
                 child: Column(
                   children: [
                     // main poster
@@ -59,6 +59,36 @@ class WriteNewArticleScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 12),
+
+                    // edit article title
+                    TitleBottom(
+                        size: size,
+                        iconPath: Assets.icons.writeicon.path,
+                        titleTxt: AppString.setTitleArticleMangeTxt,
+                        onTap: () {}
+                    ),
+                    const SizedBox(height: 8),
+                    // article title
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Text(AppString.manageArticleTitle,style: ApplicationTextStyle.normalTextStyle,textAlign: TextAlign.justify),
+                    ),
+
+                    // edit article content
+                    TitleBottom(
+                        size: size,
+                        iconPath: Assets.icons.writeicon.path,
+                        titleTxt: AppString.editTextArticle,
+                        onTap: () {}
+                    ),
+                    const SizedBox(height: 8),
+
+                    // article content
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Text(AppString.manageArticleContent,style: ApplicationTextStyle.normalTextStyle,textAlign: TextAlign.justify),
+                    )
 
                   ],
                 )
