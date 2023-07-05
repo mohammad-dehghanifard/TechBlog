@@ -37,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(height: size.height * 0.04),
             //user information
             Text("محمد دهقانی فرد",style: ApplicationTextStyle.listTitle.apply(color: SolidColors.colorPrimary)),
-            Text(box.read(TechStorageKeys.userEmailKey),style: ApplicationTextStyle.listTitle.apply(color: SolidColors.colorTextTitle)),
+            Text(box.read(TechStorageKeys.userEmailKey) ?? '',style: ApplicationTextStyle.listTitle.apply(color: SolidColors.colorTextTitle)),
 
             // user option
             const TechDivider(thickness: 0.1),

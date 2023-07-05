@@ -13,10 +13,11 @@ Future<dynamic> registerBottomSheet({ required BuildContext context, required Si
   final RegisterController registerController = Get.find<RegisterController>();
   return showModalBottomSheet(
     context: context,
+    isScrollControlled: true,
     backgroundColor: Colors.transparent,
     builder: (context) {
       return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding:  const EdgeInsets.symmetric(vertical: 16),
           decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -24,41 +25,46 @@ Future<dynamic> registerBottomSheet({ required BuildContext context, required Si
                 topRight: Radius.circular(16),
               )
           ),
-          child:  Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(AppString.inputEmail,style: ApplicationTextStyle.registerScreenTxtStyle,textAlign: TextAlign.center),
-              SizedBox(height: size.height * 0.03),
-              TextField(
-                controller: registerController.inputUserEmailController,
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                    hintStyle: ApplicationTextStyle.hintTxtTxtStyle,
-                    hintText: 'techblog@gmail.com'
-                ),
+          child:  Padding(
+            padding:  EdgeInsets.fromLTRB(16,0,16, MediaQuery.viewInsetsOf(context).bottom),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(AppString.inputEmail,style: ApplicationTextStyle.registerScreenTxtStyle,textAlign: TextAlign.center),
+                  SizedBox(height: size.height * 0.03),
+                  TextField(
+                    controller: registerController.inputUserEmailController,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                        hintStyle: ApplicationTextStyle.hintTxtTxtStyle,
+                        hintText: 'techblog@gmail.com'
+                    ),
+                  ),
+                  SizedBox(height: size.height * 0.06),
+                  // active user
+                  GetBuilder<RegisterController>(
+                    builder: (builderController) {
+                      if(builderController.isLoading){
+                        return const ApplicationLoading();
+                      }else{
+                        return RegisterBtn(
+                            size: size,
+                            text: "ادامه",
+                            onTap: () async {
+                              if(builderController.inputUserEmailController.text.isNotEmpty){
+                               await builderController.sendOtpEmail();
+                               Get.back();
+                               verifyCodeBottomSheet(context: context,size: size);
+                              }
+                            }
+                        );
+                      }
+                    }
+                  )
+                ],
               ),
-              SizedBox(height: size.height * 0.06),
-              // active user
-              GetBuilder<RegisterController>(
-                builder: (builderController) {
-                  if(builderController.isLoading){
-                    return const ApplicationLoading();
-                  }else{
-                    return RegisterBtn(
-                        size: size,
-                        text: "ادامه",
-                        onTap: () async {
-                          if(builderController.inputUserEmailController.text.isNotEmpty){
-                           await builderController.sendOtpEmail();
-                           Get.back();
-                           verifyCodeBottomSheet(context: context,size: size);
-                          }
-                        }
-                    );
-                  }
-                }
-              )
-            ],
+            ),
           )
       );
     },);

@@ -10,10 +10,11 @@ Future<dynamic> verifyCodeBottomSheet({ required BuildContext context, required 
   final RegisterController registerController = Get.find<RegisterController>();
   return showModalBottomSheet(
     context: context,
+    isScrollControlled: true,
     backgroundColor: Colors.transparent,
     builder: (context) {
       return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(vertical: 16),
           decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -21,36 +22,39 @@ Future<dynamic> verifyCodeBottomSheet({ required BuildContext context, required 
                 topRight: Radius.circular(16),
               )
           ),
-          child:  Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(AppString.inputActiveCode,style: ApplicationTextStyle.registerScreenTxtStyle,textAlign: TextAlign.center),
-              SizedBox(height: size.height * 0.03),
-              TextField(
-                controller: registerController.inputUserVerifyCodeController,
-                textAlign: TextAlign.center,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    hintStyle: ApplicationTextStyle.hintTxtTxtStyle,
-                    hintText: '******'
+          child:  Padding(
+            padding:  EdgeInsets.fromLTRB(16,0,16,MediaQuery.of(context).viewInsets.bottom),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(AppString.inputActiveCode,style: ApplicationTextStyle.registerScreenTxtStyle,textAlign: TextAlign.center),
+                SizedBox(height: size.height * 0.03),
+                TextField(
+                  controller: registerController.inputUserVerifyCodeController,
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      hintStyle: ApplicationTextStyle.hintTxtTxtStyle,
+                      hintText: '******'
+                  ),
                 ),
-              ),
-              SizedBox(height: size.height * 0.06),
-              GetBuilder<RegisterController>(
-                builder: (builderController) {
-                  if(builderController.isLoading){
-                    return const ApplicationLoading();
-                  }else{
-                    return RegisterBtn(
-                        size: size,
-                        text: "ادامه",
-                        onTap: () => builderController.verifyCode()
-                    );
-                  }
-                },
-                ),
+                SizedBox(height: size.height * 0.06),
+                GetBuilder<RegisterController>(
+                  builder: (builderController) {
+                    if(builderController.isLoading){
+                      return const ApplicationLoading();
+                    }else{
+                      return RegisterBtn(
+                          size: size,
+                          text: "ادامه",
+                          onTap: () => builderController.verifyCode()
+                      );
+                    }
+                  },
+                  ),
 
-            ],
+              ],
+            ),
           )
       );
     },);
