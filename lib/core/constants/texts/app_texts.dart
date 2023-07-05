@@ -31,6 +31,7 @@ class AppString{
   static const String selectTagArticleMangeTxt = 'انتخاب دسته بندی';
   static const String setContentArticleMangeTxt = 'ویرایش متن اصلی مقاله';
   static const String setTitleArticleMangeTxt = 'ویرایش عنوان مقاله';
+  static const String selectImageTxt = 'انتخاب عکس مقاله';
   static const String manageArticleTitle = 'اینجا عنوان مقاله قرار میگیره ، یه عنوان جذاب انتخاب کن';
   static const String writeBottomSheetDescription = """
 فکر کن !! اینجا بودنت به این معناست که یک گیک تکنولوژی هستی

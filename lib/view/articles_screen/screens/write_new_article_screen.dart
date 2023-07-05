@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
+import 'package:flutter_techblog/core/constants/style/text_styles.dart';
+import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
 import 'package:flutter_techblog/core/widget/tech_cached_image/tech_cached_image.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+
+import '../widgets/select_image_btn.dart';
 
 class WriteNewArticleScreen extends StatelessWidget {
   const WriteNewArticleScreen({super.key});
@@ -13,38 +17,54 @@ class WriteNewArticleScreen extends StatelessWidget {
         .of(context)
         .size;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              width: size.width,
-              height: size.height / 3,
-              child: Stack(
-                children: [
-                  // article poster
-                  const TechCachedImage(imageLink: ""),
-                  // gradiant
-                  Container(
-                    width: size.width,
-                    height: size.height / 13,
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: GradiantColor.singlePageAppbarGradiant,
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter
-                        )
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                width: size.width,
+                height: size.height / 3,
+                child: Column(
+                  children: [
+                    // main poster
+                    Stack(
+                      children: [
+
+                        // article poster
+                        const TechCachedImage(imageLink: ""),
+                        // gradiant
+                        Container(
+                          width: size.width,
+                          height: size.height / 13,
+                          decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                  colors: GradiantColor.singlePageAppbarGradiant,
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter
+                              )
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            icon: const Icon(
+                              Icons.arrow_forward, color: Colors.white,)),
+                        // add image btn
+                        Positioned(
+                          left: 128,
+                          right: 128,
+                          bottom: 0,
+                          child: SelectImageBtn(size: size,onTap: () {}),
+                        ),
+                      ],
                     ),
-                  ),
-                  IconButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      icon: const Icon(
-                        Icons.arrow_forward, color: Colors.white,))
-                ],
+
+                  ],
+                )
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
