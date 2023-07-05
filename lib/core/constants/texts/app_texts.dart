@@ -7,6 +7,7 @@ class AppString{
   static const String exitUser = "خروج از حساب کاربری";
   static const String relatedArticleTxt = "نوشته های مرتبط";
   static const String relatedArticles = "نوشته های مرتبط";
+  static const String writeNewArticle = "نوشتن مقاله جدید";
   static const String sendArticles = "ضافه کردن یه مقاله جدید";
   static const String sendPodcast = "ضافه کردن یه پاکدست جدید";
   static const String articlesManagement = "مدیریت مقاله ها";
