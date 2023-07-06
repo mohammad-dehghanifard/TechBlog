@@ -7,8 +7,10 @@ import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
+import 'package:flutter_techblog/view/articles_screen/screens/text_editor_screen.dart';
 import 'package:flutter_techblog/view/articles_screen/widgets/change_article_title_dialog.dart';
 import 'package:flutter_techblog/view/articles_screen/widgets/title_btn.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import '../widgets/select_image_btn.dart';
 
@@ -88,14 +90,14 @@ class WriteNewArticleScreen extends StatelessWidget {
                         size: size,
                         iconPath: Assets.icons.writeicon.path,
                         titleTxt: AppString.editTextArticle,
-                        onTap: () {}
+                        onTap: () {Get.to(const TechTextEditor());}
                     ),
                     const SizedBox(height: 8),
 
                     // article content
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Text(AppString.manageArticleContent,style: ApplicationTextStyle.normalTextStyle,textAlign: TextAlign.justify),
+                      child: HtmlWidget(buildController.articleDefaultContent,textStyle: ApplicationTextStyle.normalTextStyle),
                     )
 
                   ],

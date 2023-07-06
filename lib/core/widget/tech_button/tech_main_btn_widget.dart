@@ -7,11 +7,13 @@ class TechButton extends StatelessWidget {
     super.key,
     required this.size,
     required this.text,
-    required this.onTap
+    required this.onTap,
+    this.btnColor = SolidColors.colorPrimary
   });
 
   final Size size;
   final String text;
+  final Color btnColor;
   final Function() onTap;
 
   @override
@@ -19,7 +21,7 @@ class TechButton extends StatelessWidget {
     return ElevatedButton(
         onPressed: onTap,
         style: ButtonStyle(
-            backgroundColor: const MaterialStatePropertyAll(SolidColors.colorPrimary),
+            backgroundColor:  MaterialStatePropertyAll(btnColor),
             minimumSize: MaterialStatePropertyAll(Size(size.width * 0.4,size.height * 0.07)),
             shape: MaterialStatePropertyAll(
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))

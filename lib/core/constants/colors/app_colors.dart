@@ -22,6 +22,7 @@ class SolidColors{
   static const Color borderColor = Color.fromARGB(255, 112, 112, 112);
   static const Color welcomeTxtColor = Color.fromARGB(255, 107, 107, 107);
   static const Color surFaceColor = Color.fromARGB(255, 242, 242, 242);
+  static const Color grayBtnColor = Color.fromARGB(255, 112, 112, 112);
   static const Color lightBgTagColor = Color.fromARGB(255, 242, 242, 242);
 
 }
