@@ -12,4 +12,6 @@ class ApplicationTextStyle{
   static TextStyle normalTextStyle = TextStyle(fontFamily: defaultFontFamily,fontSize: 14,color: SolidColors.colorTextTitle,fontWeight: FontWeight.w200);
   static TextStyle writeNewArticleButtonSheetTextStyle = TextStyle(fontFamily: defaultFontFamily,fontSize: 16,color: SolidColors.colorSubText,fontWeight: FontWeight.w700);
   static TextStyle singlePageTitleTextStyle = TextStyle(fontFamily: defaultFontFamily,fontSize: 16,color: SolidColors.colorTextTitle,fontWeight: FontWeight.w700);
+  static TextStyle acceptTextBtnTxtStyle = TextStyle(fontFamily: defaultFontFamily,fontSize: 16,color: SolidColors.darkPurple,fontWeight: FontWeight.w700);
+
 }
