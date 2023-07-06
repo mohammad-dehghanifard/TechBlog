@@ -1,3 +1,4 @@
+import 'package:flutter_techblog/controller/article_controller/article_manage_controller.dart';
 import 'package:flutter_techblog/controller/home_controller/home_controller.dart';
 import 'package:flutter_techblog/controller/navigation_controller/navigation_controller.dart';
 import 'package:flutter_techblog/controller/register_controller/register_controller.dart';
@@ -15,6 +16,8 @@ class ControllerBinding extends Bindings{
     Get.put(ArticleController());
     // register controller
     Get.lazyPut(() => RegisterController());
+    // manage article controller
+    Get.lazyPut(() => ArticleManageController());
   }
 
 }
