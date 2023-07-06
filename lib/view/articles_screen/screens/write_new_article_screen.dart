@@ -2,12 +2,12 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_techblog/controller/article_controller/article_manage_controller.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
+import 'package:flutter_techblog/view/articles_screen/widgets/change_article_title_dialog.dart';
 import 'package:flutter_techblog/view/articles_screen/widgets/title_btn.dart';
 import 'package:get/get.dart';
 import '../widgets/select_image_btn.dart';
@@ -70,48 +70,7 @@ class WriteNewArticleScreen extends StatelessWidget {
                         iconPath: Assets.icons.writeicon.path,
                         titleTxt: AppString.setTitleArticleMangeTxt,
                         onTap: () {
-                          Get.defaultDialog(
-                              title: '',
-                              content: Column(
-                                children: [
-                                  //title
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      SvgPicture.asset(Assets.images.techbot,width: 48),
-                                      const SizedBox(width: 12),
-                                      Text(AppString.editArticleTitleDialogContent,style: ApplicationTextStyle.normalTextStyle,)
-                                    ],
-                                  ),
-                                  //text field
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: TextField(
-                                      controller: buildController.editArticleTitleTextController,
-                                      decoration: const InputDecoration(
-                                        hintText: AppString.editArticleTitleDialogContent,
-                                        contentPadding: EdgeInsets.all(4.0),
-                                      ),
-                                    ),
-                                  ),
-
-                                  // Accept and cancel btn
-                                  Row(
-                                    children: [
-                                      TextButton(
-                                          onPressed: () {
-                                            buildController.changeArticleTitle();
-                                            Get.back();
-                                            },
-                                          child: Text(AppString.confirmation,style: ApplicationTextStyle.acceptTextBtnTxtStyle)),
-                                      TextButton(
-                                          onPressed: () => Get.back(),
-                                          child: Text(AppString.cancelTxt,style: ApplicationTextStyle.normalTextStyle)),
-                                    ],
-                                  )
-                                ],
-                              )
-                          );
+                          changeArticleTitleDialog(buildController);
                         }
                     ),
                     const SizedBox(height: 8),
@@ -148,4 +107,5 @@ class WriteNewArticleScreen extends StatelessWidget {
       ),
     );
   }
+
 }
