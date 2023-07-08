@@ -14,6 +14,7 @@ import 'package:html_editor_enhanced/html_editor.dart';
 import '../../core/constants/post_request_keys/send_new_article_keys.dart';
 
 class ArticleManageController extends GetxController{
+  bool isLoading = false;
   String articleImagePath = 'noting';
   String articleDefaultTitle = AppString.manageArticleTitle;
   String articleDefaultContent = AppString.manageArticleContent;
@@ -60,6 +61,7 @@ class ArticleManageController extends GetxController{
   }
   // ارسال مقاله به سرور
   Future<void> sendArticle() async {
+    isLoading = true;
     Map<String, dynamic> map = {
       SendNewArticleKey.titleKey : articleDefaultTitle,
       SendNewArticleKey.contentKey : articleDefaultContent,
@@ -69,7 +71,8 @@ class ArticleManageController extends GetxController{
       SendNewArticleKey.userIdKey : box.read(TechStorageKeys.userIdKey),
       SendNewArticleKey.commandKey : 'store',
     };
-    
-    final Response response = await TechWebService.postRequest(url: ApiUrls.sendNewArticleApi, data: map);
+    final response = await TechWebService.postRequest(url: ApiUrls.sendNewArticleApi, data: map);
+    log(response.toString());
+    isLoading = false;
   }
 }

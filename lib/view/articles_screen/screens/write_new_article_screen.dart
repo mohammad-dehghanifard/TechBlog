@@ -6,6 +6,7 @@ import 'package:flutter_techblog/controller/article_controller/article_manage_co
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
+import 'package:flutter_techblog/core/widget/loading_widget/loading_widget.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
 import 'package:flutter_techblog/view/articles_screen/screens/text_editor_screen.dart';
 import 'package:flutter_techblog/view/articles_screen/widgets/change_article_title_dialog.dart';
@@ -22,19 +23,12 @@ class WriteNewArticleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: SolidColors.colorPrimary,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        elevation: 2,
-        onPressed: () {  },
-        label: Text(AppString.sendNewArticle,style: ApplicationTextStyle.acceptTextBtnTxtStyle.apply(color: SolidColors.whiteColor)),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: GetBuilder<ArticleManageController>(
-            builder: (buildController) {
-              return Padding(
+    return GetBuilder<ArticleManageController>(builder: (buildController) {
+      return Scaffold(
+        floatingActionButton: buildController.isLoading? const ApplicationLoading() :  _SendArticleFloatBtn(onTap: () => buildController.sendArticle()),
+        body: SafeArea(
+          child: SingleChildScrollView(
+              child: Padding(
                 padding:  EdgeInsets.only(bottom: size.height / 6),
                 child: Column(
                   children: [
@@ -109,10 +103,10 @@ class WriteNewArticleScreen extends StatelessWidget {
                     ),
                     //select category
                     TitleBottom(
-                        size: size,
-                        iconPath: Assets.icons.writeicon.path,
-                        titleTxt: AppString.selectCategory,
-                        onTap: () => selectCategoryBottomSheet(context),
+                      size: size,
+                      iconPath: Assets.icons.writeicon.path,
+                      titleTxt: AppString.selectCategory,
+                      onTap: () => selectCategoryBottomSheet(context),
 
                     ),
                     // category list
@@ -120,22 +114,39 @@ class WriteNewArticleScreen extends StatelessWidget {
                       width: size.width,
                       height: size.height / 20,
                       child: ListView.builder(
-                          physics: const BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: buildController.tagsList.length,
-                          itemBuilder: (context, index) {
-                            final tag = buildController.tagsList[index];
-                            return TagItem(size: size, index: index, textColor: SolidColors.whiteColor, tag: tag,color: SolidColors.colorIconAppbar,);
-                          },),
+                        physics: const BouncingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: buildController.tagsList.length,
+                        itemBuilder: (context, index) {
+                          final tag = buildController.tagsList[index];
+                          return TagItem(size: size, index: index, textColor: SolidColors.whiteColor, tag: tag,color: SolidColors.colorIconAppbar,);
+                        },),
                     )
                   ],
                 ),
-              );
-            },
+              )
           ),
         ),
-      ),
-    );
+      );
+    },);
   }
 
+}
+
+class _SendArticleFloatBtn extends StatelessWidget {
+  const _SendArticleFloatBtn({
+    required this.onTap,
+  });
+  final Function() onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton.extended(
+      backgroundColor: SolidColors.colorPrimary,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 2,
+      onPressed: onTap,
+      label: Text(AppString.sendNewArticle,style: ApplicationTextStyle.acceptTextBtnTxtStyle.apply(color: SolidColors.whiteColor)),
+    );
+  }
 }
