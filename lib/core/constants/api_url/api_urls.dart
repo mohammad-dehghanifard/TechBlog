@@ -5,4 +5,5 @@ class ApiUrls{
   static String singleArticleApi = "${baseUrl}article/get.php?";
   static String getAllArticleApi = "${baseUrl}article/get.php";
   static String registerApi = "${baseUrl}register/action.php";
+  static String sendNewArticleApi = "${baseUrl}article/post.php";
 }
