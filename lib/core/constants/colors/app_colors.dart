@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SolidColors{
+  SolidColors._();
 
   static const Color colorTitle = Color.fromARGB(255, 40, 107, 184);
   static const Color grayBtn = Color.fromARGB(255, 40, 40, 40);
@@ -24,6 +26,7 @@ class SolidColors{
   static const Color surFaceColor = Color.fromARGB(255, 242, 242, 242);
   static const Color grayBtnColor = Color.fromARGB(255, 112, 112, 112);
   static const Color lightBgTagColor = Color.fromARGB(255, 242, 242, 242);
+  static const Color whiteColor = Colors.white;
 
 }
 

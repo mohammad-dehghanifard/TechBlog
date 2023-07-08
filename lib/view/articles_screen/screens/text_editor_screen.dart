@@ -27,7 +27,6 @@ class TechTextEditor extends StatelessWidget {
                 htmlEditorOptions: const HtmlEditorOptions(
                   shouldEnsureVisible: true,
                   inputType: HtmlInputType.text
-
                 ),
                 callbacks: Callbacks(
                   onChangeContent: (newString) {

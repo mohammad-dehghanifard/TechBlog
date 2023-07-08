@@ -12,6 +12,7 @@ import 'package:flutter_techblog/view/articles_screen/widgets/change_article_tit
 import 'package:flutter_techblog/view/articles_screen/widgets/title_btn.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
+import '../widgets/select_category_bottom_sheet.dart';
 import '../widgets/select_image_btn.dart';
 
 class WriteNewArticleScreen extends StatelessWidget {
@@ -98,8 +99,15 @@ class WriteNewArticleScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: HtmlWidget(buildController.articleDefaultContent,textStyle: ApplicationTextStyle.normalTextStyle),
-                    )
+                    ),
+                    //select category
+                    TitleBottom(
+                        size: size,
+                        iconPath: Assets.icons.writeicon.path,
+                        titleTxt: AppString.selectCategory,
+                        onTap: () => selectCategoryBottomSheet(context),
 
+                    ),
                   ],
                 );
               },

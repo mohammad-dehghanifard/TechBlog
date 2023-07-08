@@ -20,7 +20,7 @@ class AppString{
   static const String setImage = "انتخاب تصویر";
   static const String editTitleArticle = "ویرایش عنوان مقاله";
   static const String editTextArticle = "ویرایش متن اصلی مقاله";
-  static const String srtCategory = "انتخاب دسته بندی";
+  static const String selectCategory = "انتخاب دسته بندی";
   static const String editProfile = "ویرایش عکس پروفایل";
   static const String manageArticle = "مدیریت مقالات";
   static const String editArticleTitleDialogContent = "لطفا یه عنوان پر معنا و کوتاه انتخاب کن";
