@@ -51,4 +51,10 @@ class ArticleManageController extends GetxController{
       log("این تگ قبلا انتخاب شده است");
     }
   }
+  // ارسال مقاله به سرور
+  Future<void> sendArticle() async {
+    Map<String, dynamic> map = {
+
+    };
+  }
 }
