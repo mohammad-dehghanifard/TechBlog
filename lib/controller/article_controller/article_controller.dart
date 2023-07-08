@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter_techblog/core/constants/api_url/api_urls.dart';
 import 'package:flutter_techblog/core/services/web_service.dart';
 import 'package:flutter_techblog/model/article_model/article_model.dart';
-import 'package:flutter_techblog/model/tag_model/tag_modle.dart';
+import 'package:flutter_techblog/model/tag_model/tag_model.dart';
 import 'package:get/get.dart';
 
 class ArticleController extends GetxController{

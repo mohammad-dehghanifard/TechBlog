@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_techblog/controller/home_controller/home_controller.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
 import 'package:flutter_techblog/core/widget/tech_button/tech_main_btn_widget.dart';
-import 'package:flutter_techblog/model/tag_model/tag_modle.dart';
+import 'package:flutter_techblog/model/tag_model/tag_model.dart';
 import 'package:get/get.dart';
 
 Future<dynamic> selectCategoryBottomSheet(BuildContext context) {
@@ -35,7 +37,12 @@ Future<dynamic> selectCategoryBottomSheet(BuildContext context) {
                   itemCount: controller.homeDataModel!.tags.length,
                   itemBuilder: (context, index) {
                     final tag = controller.homeDataModel!.tags[index];
-                    return _SelectTagItem(tag: tag);
+                    return _SelectTagItem(
+                      tag: tag,
+                      onTap: (tagTitle) {
+                        log(tagTitle);
+                      },
+                    );
 
                   },
                 ),
@@ -59,19 +66,24 @@ Future<dynamic> selectCategoryBottomSheet(BuildContext context) {
 class _SelectTagItem extends StatelessWidget {
   const _SelectTagItem({
     required this.tag,
+    required this.onTap
   });
 
   final TagModel tag;
+  final Function(String) onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(4,16,4,4),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: SolidColors.colorPrimary,
+    return GestureDetector(
+      onTap: () => onTap(tag.title),
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(4,16,4,4),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: SolidColors.colorPrimary,
+        ),
+        child: Center(child: Text(tag.title,style: ApplicationTextStyle.normalTextStyle.apply(color: SolidColors.whiteColor),textAlign: TextAlign.center,)),
       ),
-      child: Center(child: Text(tag.title,style: ApplicationTextStyle.normalTextStyle.apply(color: SolidColors.whiteColor),textAlign: TextAlign.center,)),
     );
   }
 }

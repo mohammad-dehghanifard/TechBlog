@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
-import 'package:flutter_techblog/model/tag_model/tag_modle.dart';
+import 'package:flutter_techblog/model/tag_model/tag_model.dart';
 
 class TagItem extends StatelessWidget {
   const TagItem({

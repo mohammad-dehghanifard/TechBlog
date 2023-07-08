@@ -1,6 +1,6 @@
 import 'package:flutter_techblog/model/article_model/article_model.dart';
 import 'package:flutter_techblog/model/podcast_model/podcast_model.dart';
-import 'package:flutter_techblog/model/tag_model/tag_modle.dart';
+import 'package:flutter_techblog/model/tag_model/tag_model.dart';
 import 'category_model.dart';
 import 'main_poster_model.dart';
 
