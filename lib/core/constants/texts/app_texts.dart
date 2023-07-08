@@ -8,8 +8,8 @@ class AppString{
   static const String relatedArticleTxt = "نوشته های مرتبط";
   static const String relatedArticles = "نوشته های مرتبط";
   static const String writeNewArticle = "نوشتن مقاله جدید";
-  static const String sendArticles = "ضافه کردن یه مقاله جدید";
-  static const String sendPodcast = "ضافه کردن یه پاکدست جدید";
+  static const String sendArticles = "اضافه کردن یه مقاله جدید";
+  static const String sendPodcast = "اضافه کردن یه پاکدست جدید";
   static const String articlesManagement = "مدیریت مقاله ها";
   static const String podcastManagement = "مدیریت پاک دست ها";
   static const String continuation = "ادامه";
@@ -33,6 +33,7 @@ class AppString{
   static const String setContentArticleMangeTxt = 'ویرایش متن اصلی مقاله';
   static const String setTitleArticleMangeTxt = 'ویرایش عنوان مقاله';
   static const String cancelTxt = 'انصراف';
+  static const String sendNewArticle = 'ارسال مقاله';
   static const String selectImageTxt = 'انتخاب عکس مقاله';
   static const String manageArticleTitle = 'اینجا عنوان مقاله قرار میگیره ، یه عنوان جذاب انتخاب کن';
   static const String writeBottomSheetDescription = """

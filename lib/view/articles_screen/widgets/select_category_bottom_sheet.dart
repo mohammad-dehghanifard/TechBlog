@@ -1,6 +1,6 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_techblog/controller/article_controller/article_manage_controller.dart';
 import 'package:flutter_techblog/controller/home_controller/home_controller.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
@@ -26,11 +26,11 @@ Future<dynamic> selectCategoryBottomSheet(BuildContext context) {
           height: size.height / 2.5,
           child: Column(
             children: [
-              Expanded(
+              GetBuilder<ArticleManageController>(builder: (buildController) => Expanded(
                 child: GridView.builder(
                   physics: const BouncingScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
+                    crossAxisCount: 4,
                     childAspectRatio: 1.6,
 
                   ),
@@ -39,14 +39,12 @@ Future<dynamic> selectCategoryBottomSheet(BuildContext context) {
                     final tag = controller.homeDataModel!.tags[index];
                     return _SelectTagItem(
                       tag: tag,
-                      onTap: (tagTitle) {
-                        log(tagTitle);
-                      },
+                      onTap: () => buildController.addArticleTag(tag),
                     );
 
                   },
                 ),
-              ),
+              )),
               // btn
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -70,12 +68,12 @@ class _SelectTagItem extends StatelessWidget {
   });
 
   final TagModel tag;
-  final Function(String) onTap;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onTap(tag.title),
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.fromLTRB(4,16,4,4),
         decoration: BoxDecoration(
