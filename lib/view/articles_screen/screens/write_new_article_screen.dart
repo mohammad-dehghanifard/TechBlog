@@ -34,99 +34,102 @@ class WriteNewArticleScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: GetBuilder<ArticleManageController>(
             builder: (buildController) {
-              return Column(
-                children: [
-                  // main poster
-                  Stack(
-                    children: [
-                      // article poster
-                      buildController.articleImagePath == 'noting' ?
-                      Image.asset(Assets.images.singleimg.path) :
-                      Image.file(File(buildController.articleImagePath)),
-                      // gradiant
-                      Container(
-                        width: size.width,
-                        height: size.height / 13,
-                        decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: GradiantColor.singlePageAppbarGradiant,
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter
-                            )
+              return Padding(
+                padding:  EdgeInsets.only(bottom: size.height / 6),
+                child: Column(
+                  children: [
+                    // main poster
+                    Stack(
+                      children: [
+                        // article poster
+                        buildController.articleImagePath == 'noting' ?
+                        Image.asset(Assets.images.singleimg.path) :
+                        Image.file(File(buildController.articleImagePath)),
+                        // gradiant
+                        Container(
+                          width: size.width,
+                          height: size.height / 13,
+                          decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                  colors: GradiantColor.singlePageAppbarGradiant,
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter
+                              )
+                          ),
                         ),
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            Get.back();
-                          },
-                          icon: const Icon(
-                            Icons.arrow_forward, color: Colors.white,)),
-                      // add image btn
-                      Positioned(
-                        left: 128,
-                        right: 128,
-                        bottom: 0,
-                        child: SelectImageBtn(size: size,onTap: () {buildController.picker(fileType: FileType.image);}),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
+                        IconButton(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            icon: const Icon(
+                              Icons.arrow_forward, color: Colors.white,)),
+                        // add image btn
+                        Positioned(
+                          left: 128,
+                          right: 128,
+                          bottom: 0,
+                          child: SelectImageBtn(size: size,onTap: () {buildController.picker(fileType: FileType.image);}),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
 
-                  // edit article title
-                  TitleBottom(
-                      size: size,
-                      iconPath: Assets.icons.writeicon.path,
-                      titleTxt: AppString.setTitleArticleMangeTxt,
-                      onTap: () {
-                        changeArticleTitleDialog(buildController);
-                      }
-                  ),
-                  const SizedBox(height: 8),
-                  // article title
-                  Align(
-                      alignment: Alignment.centerRight,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: Text(buildController.articleDefaultTitle,style: ApplicationTextStyle.normalTextStyle,textAlign: TextAlign.right),
-                      )),
+                    // edit article title
+                    TitleBottom(
+                        size: size,
+                        iconPath: Assets.icons.writeicon.path,
+                        titleTxt: AppString.setTitleArticleMangeTxt,
+                        onTap: () {
+                          changeArticleTitleDialog(buildController);
+                        }
+                    ),
+                    const SizedBox(height: 8),
+                    // article title
+                    Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: Text(buildController.articleDefaultTitle,style: ApplicationTextStyle.normalTextStyle,textAlign: TextAlign.right),
+                        )),
 
 
-                  // edit article content
-                  TitleBottom(
-                      size: size,
-                      iconPath: Assets.icons.writeicon.path,
-                      titleTxt: AppString.editTextArticle,
-                      onTap: () {Get.to(const TechTextEditor());}
-                  ),
-                  const SizedBox(height: 8),
+                    // edit article content
+                    TitleBottom(
+                        size: size,
+                        iconPath: Assets.icons.writeicon.path,
+                        titleTxt: AppString.editTextArticle,
+                        onTap: () {Get.to(const TechTextEditor());}
+                    ),
+                    const SizedBox(height: 8),
 
-                  // article content
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: HtmlWidget(buildController.articleDefaultContent,textStyle: ApplicationTextStyle.normalTextStyle),
-                  ),
-                  //select category
-                  TitleBottom(
-                      size: size,
-                      iconPath: Assets.icons.writeicon.path,
-                      titleTxt: AppString.selectCategory,
-                      onTap: () => selectCategoryBottomSheet(context),
+                    // article content
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: HtmlWidget(buildController.articleDefaultContent,textStyle: ApplicationTextStyle.normalTextStyle),
+                    ),
+                    //select category
+                    TitleBottom(
+                        size: size,
+                        iconPath: Assets.icons.writeicon.path,
+                        titleTxt: AppString.selectCategory,
+                        onTap: () => selectCategoryBottomSheet(context),
 
-                  ),
-                  // category list
-                  SizedBox(
-                    width: size.width,
-                    height: size.height / 20,
-                    child: ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: buildController.tagsList.length,
-                        itemBuilder: (context, index) {
-                          final tag = buildController.tagsList[index];
-                          return TagItem(size: size, index: index, textColor: SolidColors.whiteColor, tag: tag,color: SolidColors.colorIconAppbar,);
-                        },),
-                  )
-                ],
+                    ),
+                    // category list
+                    SizedBox(
+                      width: size.width,
+                      height: size.height / 20,
+                      child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: buildController.tagsList.length,
+                          itemBuilder: (context, index) {
+                            final tag = buildController.tagsList[index];
+                            return TagItem(size: size, index: index, textColor: SolidColors.whiteColor, tag: tag,color: SolidColors.colorIconAppbar,);
+                          },),
+                    )
+                  ],
+                ),
               );
             },
           ),
