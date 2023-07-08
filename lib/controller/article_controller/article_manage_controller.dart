@@ -62,17 +62,19 @@ class ArticleManageController extends GetxController{
   // ارسال مقاله به سرور
   Future<void> sendArticle() async {
     isLoading = true;
+    update();
     Map<String, dynamic> map = {
       SendNewArticleKey.titleKey : articleDefaultTitle,
       SendNewArticleKey.contentKey : articleDefaultContent,
       SendNewArticleKey.catIdKey : '6',
-      SendNewArticleKey.tagListKey : tagsListId,
-      SendNewArticleKey.imageKey :  dio.MultipartFile.fromString(articleImagePath),
+      SendNewArticleKey.tagListKey : '[]',
+      SendNewArticleKey.imageKey :  await dio.MultipartFile.fromFile(articleImagePath),
       SendNewArticleKey.userIdKey : box.read(TechStorageKeys.userIdKey),
       SendNewArticleKey.commandKey : 'store',
     };
     final response = await TechWebService.postRequest(url: ApiUrls.sendNewArticleApi, data: map);
     log(response.toString());
     isLoading = false;
+    update();
   }
 }
