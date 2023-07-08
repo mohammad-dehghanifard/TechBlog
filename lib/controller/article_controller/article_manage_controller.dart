@@ -75,6 +75,7 @@ class ArticleManageController extends GetxController{
     final response = await TechWebService.postRequest(url: ApiUrls.sendNewArticleApi, data: map);
     log(response.toString());
     isLoading = false;
+    Get.back;
     update();
   }
 }
