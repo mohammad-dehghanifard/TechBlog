@@ -21,7 +21,6 @@ class ArticleManageController extends GetxController{
   TextEditingController editArticleTitleTextController = TextEditingController();
   HtmlEditorController editingArticleControllerText = HtmlEditorController();
   List<TagModel> tagsList = [];
-  List<String> tagsListId = [];
   final box = GetStorage();
 
   // انتخاب تصویر
@@ -53,7 +52,7 @@ class ArticleManageController extends GetxController{
   void addArticleTag(TagModel newTag){
     if(!tagsList.contains(newTag)){
       tagsList.add(newTag);
-      tagsListId.add(newTag.id);
+
       update();
     }else{
       log("این تگ قبلا انتخاب شده است");
@@ -77,5 +76,12 @@ class ArticleManageController extends GetxController{
     isLoading = false;
     Get.back;
     update();
+  }
+  // حذف تگ انتخاب شده
+  void deleteSelectTag(TagModel tag){
+    if(tagsList.contains(tag)){
+      tagsList.remove(tag);
+      update();
+    }
   }
 }

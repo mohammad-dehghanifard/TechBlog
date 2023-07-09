@@ -5,7 +5,7 @@ import 'package:flutter_techblog/model/tag_model/tag_model.dart';
 class TagItem extends StatelessWidget {
   const TagItem({
     super.key,
-    required this.size, required this.index, this.gradient, this.color, required this.textColor, required this.tag,
+    required this.size, required this.index, this.gradient, this.color, required this.textColor, required this.tag,this.radius = 64
   });
 
   final Size size;
@@ -14,6 +14,7 @@ class TagItem extends StatelessWidget {
   final Color? color;
   final Color textColor;
   final TagModel tag;
+  final double radius;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class TagItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: color,
-          borderRadius: BorderRadius.circular(64),
+          borderRadius: BorderRadius.circular(radius),
           gradient: gradient
       ),
       child: Center(child: Text("# ${tag.title}",style: ApplicationTextStyle.subtext1.apply(color: textColor),)),

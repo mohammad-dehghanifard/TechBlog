@@ -27,6 +27,7 @@ class SolidColors{
   static const Color grayBtnColor = Color.fromARGB(255, 112, 112, 112);
   static const Color lightBgTagColor = Color.fromARGB(255, 242, 242, 242);
   static const Color whiteColor = Colors.white;
+  static const Color pinkColor = Colors.pink;
 
 }
 

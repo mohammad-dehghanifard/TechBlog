@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_techblog/controller/article_controller/article_manage_controller.dart';
 import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
@@ -119,7 +120,13 @@ class WriteNewArticleScreen extends StatelessWidget {
                         itemCount: buildController.tagsList.length,
                         itemBuilder: (context, index) {
                           final tag = buildController.tagsList[index];
-                          return TagItem(size: size, index: index, textColor: SolidColors.whiteColor, tag: tag,color: SolidColors.colorIconAppbar,);
+                          return TagItem(
+                            size: size,
+                            index: index,
+                            textColor: SolidColors.whiteColor,
+                            tag: tag,
+                            color: SolidColors.colorIconAppbar,
+                            radius: 8,);
                         },),
                     )
                   ],
