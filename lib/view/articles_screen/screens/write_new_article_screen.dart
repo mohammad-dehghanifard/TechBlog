@@ -120,13 +120,16 @@ class WriteNewArticleScreen extends StatelessWidget {
                         itemCount: buildController.tagsList.length,
                         itemBuilder: (context, index) {
                           final tag = buildController.tagsList[index];
-                          return TagItem(
-                            size: size,
-                            index: index,
-                            textColor: SolidColors.whiteColor,
-                            tag: tag,
-                            color: SolidColors.colorIconAppbar,
-                            radius: 8,);
+                          return GestureDetector(
+                            onTap: () => buildController.deleteSelectTag(tag),
+                            child: TagItem(
+                              size: size,
+                              index: index,
+                              textColor: SolidColors.whiteColor,
+                              tag: tag,
+                              color: SolidColors.colorIconAppbar,
+                              radius: 8,),
+                          );
                         },),
                     )
                   ],
