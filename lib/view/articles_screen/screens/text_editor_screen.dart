@@ -41,13 +41,11 @@ class TechTextEditor extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 TechButton(
-                  size: size,
                   text: AppString.confirmation,
                   onTap: () {
                    Get.back();
                   },),
                 TechButton(
-                  size: size,
                   text: AppString.cancelTxt,
                   btnColor: SolidColors.grayBtnColor,
                   onTap: () => Get.back())

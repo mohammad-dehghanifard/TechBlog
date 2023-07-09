@@ -51,7 +51,6 @@ Future<dynamic> selectCategoryBottomSheet(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TechButton(
-                  size: size,
                   text: AppString.continuation,
                   onTap: () => Get.back(),),
               )

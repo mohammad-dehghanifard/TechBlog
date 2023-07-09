@@ -5,19 +5,18 @@ import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 class TechButton extends StatelessWidget {
   const TechButton({
     super.key,
-    required this.size,
     required this.text,
     required this.onTap,
     this.btnColor = SolidColors.colorPrimary
   });
 
-  final Size size;
   final String text;
   final Color btnColor;
   final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return ElevatedButton(
         onPressed: onTap,
         style: ButtonStyle(

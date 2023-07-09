@@ -49,7 +49,6 @@ Future<dynamic> registerBottomSheet({ required BuildContext context, required Si
                         return const ApplicationLoading();
                       }else{
                         return TechButton(
-                            size: size,
                             text: "ادامه",
                             onTap: () async {
                               if(builderController.inputUserEmailController.text.isNotEmpty){

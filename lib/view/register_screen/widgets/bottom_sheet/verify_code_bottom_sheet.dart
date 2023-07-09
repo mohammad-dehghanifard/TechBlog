@@ -46,7 +46,6 @@ Future<dynamic> verifyCodeBottomSheet({ required BuildContext context, required 
                         return const ApplicationLoading();
                       }else{
                         return TechButton(
-                            size: size,
                             text: "ادامه",
                             onTap: () => builderController.verifyCode()
                         );

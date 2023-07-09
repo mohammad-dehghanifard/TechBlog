@@ -2,8 +2,11 @@
 import 'dart:developer';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_techblog/core/constants/api_url/api_urls.dart';
+import 'package:flutter_techblog/core/constants/colors/app_colors.dart';
 import 'package:flutter_techblog/core/constants/storage_keys/storage_keys.dart';
+import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
 import 'package:flutter_techblog/core/services/web_service.dart';
 import 'package:flutter_techblog/core/widget/snack_bar/tech_snack_bar.dart';
@@ -115,13 +118,38 @@ class ArticleManageController extends GetxController{
   // حذف تگ انتخاب شده
   void deleteSelectTag(TagModel tag){
     if(tagsList.contains(tag)){
-      tagsList.remove(tag);
-      update();
-      techSnackBar(
-          title: AppString.successTitleTxt,
-          content: AppString.removeTagSuccessMsg,
-          status: SnackStatus.error
-      );
+      removeTagDialog(tag);
     }
+  }
+
+  Future<dynamic> removeTagDialog(TagModel tag) {
+    return Get.defaultDialog(
+      title: "آیا مطئمن هستید؟!",
+      titleStyle: ApplicationTextStyle.txtDialogTitleTxtStyle,
+      content: Column(
+        children: [
+          Text('آیا مطئن هستید قصد حذف این دسته بندی را دارید؟',style: ApplicationTextStyle.normalTextStyle),
+          Row(
+            children: [
+              TextButton(
+                  onPressed: () {
+                    tagsList.remove(tag);
+                    Get.back();
+                    update();
+                    techSnackBar(
+                        title: AppString.successTitleTxt,
+                        content: AppString.removeTagSuccessMsg,
+                        status: SnackStatus.error
+                    );
+                  },
+                  child: Text("بله، حذفش کن",style: ApplicationTextStyle.acceptTextBtnTxtStyle.copyWith(fontSize: 14,color: SolidColors.redColor))),
+              TextButton(
+                  onPressed: () => Get.back(),
+                  child: Text("نه، پشیمون شدم",style: ApplicationTextStyle.acceptTextBtnTxtStyle.copyWith(fontSize: 14))),
+            ],
+          )
+        ],
+      )
+    );
   }
 }

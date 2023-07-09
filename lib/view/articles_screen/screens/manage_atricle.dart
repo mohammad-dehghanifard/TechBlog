@@ -21,7 +21,6 @@ class ManageArticleScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(8.0),
         child: TechButton(
-          size: size,
           onTap: () {Get.toNamed(ScreenRouts.writeNewArticleScreenRoute);},
           text: AppString.writeNewArticle,
         ),

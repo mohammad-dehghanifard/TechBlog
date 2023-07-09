@@ -63,4 +63,6 @@ class ArticleController extends GetxController{
       update();
     }
   }
+
+
 }

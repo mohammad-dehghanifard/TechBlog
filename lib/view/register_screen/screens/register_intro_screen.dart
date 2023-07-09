@@ -27,7 +27,6 @@ class RegisterIntro extends StatelessWidget {
                 textAlign: TextAlign.center),
             SizedBox(height: size.height * 0.06),
             TechButton(
-                size: size,
                 text: AppString.singUp,
                 onTap: () {
                   // input email
