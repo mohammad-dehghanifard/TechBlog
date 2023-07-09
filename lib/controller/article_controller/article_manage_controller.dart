@@ -6,6 +6,7 @@ import 'package:flutter_techblog/core/constants/api_url/api_urls.dart';
 import 'package:flutter_techblog/core/constants/storage_keys/storage_keys.dart';
 import 'package:flutter_techblog/core/constants/texts/app_texts.dart';
 import 'package:flutter_techblog/core/services/web_service.dart';
+import 'package:flutter_techblog/core/widget/snack_bar/tech_snack_bar.dart';
 import 'package:flutter_techblog/model/tag_model/tag_model.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart' as dio;
@@ -31,9 +32,11 @@ class ArticleManageController extends GetxController{
     articleImagePath = result.files.single.path!;
     update();
   }else{
-    log("هیچ عکسی انتخاب نشده!!");
+    techSnackBar();
   }
   }
+
+
   //ویرایش عنوان مقاله
   void changeArticleTitle(){
     if(editArticleTitleTextController.text.isNotEmpty){

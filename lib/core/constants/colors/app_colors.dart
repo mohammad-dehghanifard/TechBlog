@@ -28,6 +28,8 @@ class SolidColors{
   static const Color lightBgTagColor = Color.fromARGB(255, 242, 242, 242);
   static const Color whiteColor = Colors.white;
   static const Color pinkColor = Colors.pink;
+  static const Color redColor = Colors.red;
+  static const Color greenColor = Colors.green;
 
 }
 
