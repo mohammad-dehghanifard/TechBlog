@@ -31,19 +31,40 @@ class ArticleManageController extends GetxController{
   if(result != null){
     articleImagePath = result.files.single.path!;
     update();
+    techSnackBar(
+        title: AppString.successTitleTxt,
+        content: AppString.selectImageSuccessMsg,
+        status: SnackStatus.success
+    );
   }else{
-    techSnackBar();
+    techSnackBar(
+      title: AppString.errorTitleTxt,
+      content: AppString.selectImageErrorMsg,
+      status: SnackStatus.error
+    );
   }
   }
 
 
   //ویرایش عنوان مقاله
   void changeArticleTitle(){
-    if(editArticleTitleTextController.text.isNotEmpty){
+    if(editArticleTitleTextController.text != ''){
       articleDefaultTitle = editArticleTitleTextController.text;
+      editArticleTitleTextController.clear();
       update();
+      Get.back();
+      techSnackBar(
+          title: AppString.successTitleTxt,
+          content: AppString.setArticleTitleSuccessMsg,
+          status: SnackStatus.error
+      );
     }else{
-      log("عنوانی وارد نشده");
+      Get.back();
+      techSnackBar(
+          title: AppString.errorTitleTxt,
+          content: AppString.setArticleTitleErrorMsg,
+          status: SnackStatus.error
+      );
     }
   }
   // ویرایش متن مقاله
@@ -55,36 +76,52 @@ class ArticleManageController extends GetxController{
   void addArticleTag(TagModel newTag){
     if(!tagsList.contains(newTag)){
       tagsList.add(newTag);
-
       update();
-    }else{
-      log("این تگ قبلا انتخاب شده است");
     }
   }
   // ارسال مقاله به سرور
   Future<void> sendArticle() async {
-    isLoading = true;
-    update();
-    Map<String, dynamic> map = {
-      SendNewArticleKey.titleKey : articleDefaultTitle,
-      SendNewArticleKey.contentKey : articleDefaultContent,
-      SendNewArticleKey.catIdKey : '6',
-      SendNewArticleKey.tagListKey : '[]',
-      SendNewArticleKey.imageKey :  await dio.MultipartFile.fromFile(articleImagePath),
-      SendNewArticleKey.userIdKey : box.read(TechStorageKeys.userIdKey),
-      SendNewArticleKey.commandKey : 'store',
-    };
-    final response = await TechWebService.postRequest(url: ApiUrls.sendNewArticleApi, data: map);
-    log(response.toString());
-    isLoading = false;
-    Get.back;
-    update();
+    if(
+    articleImagePath != 'noting' &&
+    articleDefaultTitle != AppString.manageArticleTitle &&
+    articleDefaultContent != AppString.manageArticleContent &&
+    tagsList.isNotEmpty
+    ){
+      isLoading = true;
+      update();
+      Map<String, dynamic> map = {
+        SendNewArticleKey.titleKey : articleDefaultTitle,
+        SendNewArticleKey.contentKey : articleDefaultContent,
+        SendNewArticleKey.catIdKey : '6',
+        SendNewArticleKey.tagListKey : '[]',
+        SendNewArticleKey.imageKey :  await dio.MultipartFile.fromFile(articleImagePath),
+        SendNewArticleKey.userIdKey : box.read(TechStorageKeys.userIdKey),
+        SendNewArticleKey.commandKey : 'store',
+      };
+      final response = await TechWebService.postRequest(url: ApiUrls.sendNewArticleApi, data: map);
+      log(response.toString());
+      isLoading = false;
+      Get.back;
+      update();
+    }else{
+      techSnackBar(
+          title: AppString.errorTitleTxt,
+          content: AppString.completedArticleInformationErrorMsg,
+          status: SnackStatus.error
+      );
+    }
   }
+
   // حذف تگ انتخاب شده
   void deleteSelectTag(TagModel tag){
     if(tagsList.contains(tag)){
       tagsList.remove(tag);
       update();
+      techSnackBar(
+          title: AppString.successTitleTxt,
+          content: AppString.removeTagSuccessMsg,
+          status: SnackStatus.error
+      );
     }
   }
 }

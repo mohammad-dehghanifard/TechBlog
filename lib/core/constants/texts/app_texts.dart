@@ -22,7 +22,15 @@ class AppString{
   static const String editTextArticle = "ویرایش متن اصلی مقاله";
   static const String selectCategory = "انتخاب دسته بندی";
   static const String editProfile = "ویرایش عکس پروفایل";
+  static const String errorTitleTxt = "خطا";
+  static const String successTitleTxt = "عملیات موفق";
   static const String manageArticle = "مدیریت مقالات";
+  static const String setArticleTitleErrorMsg = "شما هیچ عنوانی برای مقاله خود وارد نکرده اید!";
+  static const String completedArticleInformationErrorMsg = "لطفا تمام اطلاعات مقاله خود را وارد کنید";
+  static const String setArticleTitleSuccessMsg = "عنوان مقاله شما با موفقیت ویرایش شد";
+  static const String removeTagSuccessMsg = "دسته بندی مورد نظر با موفقیت حذف شد";
+  static const String selectImageErrorMsg = "شما هیچ عکسی برای مقاله خود انتخاب نکردید!";
+  static const String selectImageSuccessMsg = "عکس مورد نظر شما با موفقیت انتخاب شد.";
   static const String editArticleTitleDialogContent = "لطفا یه عنوان پر معنا و کوتاه انتخاب کن";
   static const String selectedCategory = "دسته بندی هایی که دوست داری رو انتخاب کن";
   static const String writeBottomSheetTitle = "دونسته هات رو با بقیه به اشتراک بذار ...";
