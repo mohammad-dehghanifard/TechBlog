@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialBinding: ControllerBinding(),
       locale: const Locale('fa'),
-      initialRoute: ScreenRouts.singlePodcastScreenRoute,
+      initialRoute: ScreenRouts.splashRoute,
       getPages: [
         GetPage(name: ScreenRouts.splashRoute, page: () => const SplashScreen()),
         GetPage(name: ScreenRouts.homeRoute, page: () => const HomeScreen()),
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: ScreenRouts.singleArticleScreenRoute, page: () => const SingleArticleScreen()),
         GetPage(name: ScreenRouts.manageArticleScreenRoute, page: () => const ManageArticleScreen()),
         GetPage(name: ScreenRouts.writeNewArticleScreenRoute, page: () => const WriteNewArticleScreen()),
-        GetPage(name: ScreenRouts.singlePodcastScreenRoute, page: () => const SinglePodcastScreen()),
+        GetPage(name: ScreenRouts.singlePodcastScreenRoute, page: () =>  SinglePodcastScreen()),
       ],
       title: 'TechBlog',
       theme: ThemeData(

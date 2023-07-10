@@ -20,7 +20,7 @@ class ControllerBinding extends Bindings{
     // manage article controller
     Get.lazyPut(() => ArticleManageController());
     // podcast controller
-    Get.lazyPut(() => PodcastController());
+    Get.put(PodcastController());
   }
 
 }

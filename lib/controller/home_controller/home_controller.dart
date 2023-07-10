@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_techblog/core/constants/api_url/api_urls.dart';
 import 'package:flutter_techblog/core/services/web_service.dart';
 import 'package:flutter_techblog/model/home_model/home_model.dart';
@@ -18,7 +16,6 @@ class HomeController extends GetxController{
     update();
     final response = await TechWebService.getRequest(url: ApiUrls.homeApi);
     if(response.statusCode == 200){
-      log(response.data.toString());
       homeDataModel = TechBlogHomeDataModel.fromJson(response.data);
       isLoading = false;
       update();

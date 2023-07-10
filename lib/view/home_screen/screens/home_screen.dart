@@ -146,7 +146,8 @@ class HomeScreen extends StatelessWidget {
                             size: size,
                             bodyMargin: bodyMargin,
                             index: index,
-                            onTap: () {},);
+                            onTap: () => Get.toNamed(ScreenRouts.singlePodcastScreenRoute,arguments: podcast)
+                          );
                         },
                       ),
                     ),
