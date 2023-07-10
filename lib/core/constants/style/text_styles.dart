@@ -14,5 +14,6 @@ class ApplicationTextStyle{
   static TextStyle singlePageTitleTextStyle = TextStyle(fontFamily: defaultFontFamily,fontSize: 16,color: SolidColors.colorTextTitle,fontWeight: FontWeight.w700);
   static TextStyle acceptTextBtnTxtStyle = TextStyle(fontFamily: defaultFontFamily,fontSize: 16,color: SolidColors.darkPurple,fontWeight: FontWeight.w700);
   static TextStyle txtDialogTitleTxtStyle = TextStyle(fontFamily: defaultFontFamily,fontSize: 16,color: SolidColors.darkPurple,fontWeight: FontWeight.w700);
+  static TextStyle podcastDecorationTxtStyle = TextStyle(fontFamily: defaultFontFamily,fontSize: 16,color: SolidColors.blackColor,fontWeight: FontWeight.w700);
 
 }

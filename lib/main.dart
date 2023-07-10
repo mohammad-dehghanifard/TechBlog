@@ -9,6 +9,7 @@ import 'package:flutter_techblog/view/articles_screen/screens/single_article_scr
 import 'package:flutter_techblog/view/articles_screen/screens/write_new_article_screen.dart';
 import 'package:flutter_techblog/view/home_screen/screens/home_screen.dart';
 import 'package:flutter_techblog/view/main_screen/screens/main_screen.dart';
+import 'package:flutter_techblog/view/podcast_screen/screens/single_podcast_screen.dart';
 import 'package:flutter_techblog/view/profile_screen/screens/profile_screen.dart';
 import 'package:flutter_techblog/view/register_screen/screens/register_intro_screen.dart';
 import 'package:flutter_techblog/view/splash_screen/screen/splash_screen.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialBinding: ControllerBinding(),
       locale: const Locale('fa'),
-      initialRoute: ScreenRouts.splashRoute,
+      initialRoute: ScreenRouts.singlePodcastScreenRoute,
       getPages: [
         GetPage(name: ScreenRouts.splashRoute, page: () => const SplashScreen()),
         GetPage(name: ScreenRouts.homeRoute, page: () => const HomeScreen()),
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: ScreenRouts.singleArticleScreenRoute, page: () => const SingleArticleScreen()),
         GetPage(name: ScreenRouts.manageArticleScreenRoute, page: () => const ManageArticleScreen()),
         GetPage(name: ScreenRouts.writeNewArticleScreenRoute, page: () => const WriteNewArticleScreen()),
+        GetPage(name: ScreenRouts.singlePodcastScreenRoute, page: () => const SinglePodcastScreen()),
       ],
       title: 'TechBlog',
       theme: ThemeData(
