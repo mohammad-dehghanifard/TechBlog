@@ -29,6 +29,7 @@ class SolidColors{
   static const Color whiteColor = Colors.white;
   static const Color pinkColor = Colors.pink;
   static const Color redColor = Colors.red;
+  static const Color orangeColor = Colors.orange;
   static const Color blackColor = Colors.black;
   static const Color greenColor = Colors.green;
 

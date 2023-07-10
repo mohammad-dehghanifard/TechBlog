@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_techblog/core/constants/style/text_styles.dart';
 import 'package:flutter_techblog/gen/assets.gen.dart';
+import 'package:flutter_techblog/view/podcast_screen/widgets/podcast_controller_widget.dart';
 import 'package:get/get.dart';
 import '../../../core/constants/colors/app_colors.dart';
 import '../../../core/widget/tech_cached_image/tech_cached_image.dart';
@@ -100,8 +101,9 @@ class SinglePodcastScreen extends StatelessWidget {
                       );
                     },
                 ),
-              )
-
+              ),
+              // podcast controller
+              const PodcastControllerWidget()
             ],
           ),
         )
@@ -109,4 +111,6 @@ class SinglePodcastScreen extends StatelessWidget {
     );
   }
 }
+
+
 
