@@ -1,6 +1,7 @@
 import 'package:flutter_techblog/controller/article_controller/article_manage_controller.dart';
 import 'package:flutter_techblog/controller/home_controller/home_controller.dart';
 import 'package:flutter_techblog/controller/navigation_controller/navigation_controller.dart';
+import 'package:flutter_techblog/controller/podcast_controller/podcast_controller.dart';
 import 'package:flutter_techblog/controller/register_controller/register_controller.dart';
 import 'package:flutter_techblog/controller/article_controller/article_controller.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,8 @@ class ControllerBinding extends Bindings{
     Get.lazyPut(() => RegisterController());
     // manage article controller
     Get.lazyPut(() => ArticleManageController());
+    // podcast controller
+    Get.lazyPut(() => PodcastController());
   }
 
 }
