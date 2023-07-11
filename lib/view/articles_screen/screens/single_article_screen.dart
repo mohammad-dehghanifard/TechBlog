@@ -19,9 +19,10 @@ class SingleArticleScreen extends StatefulWidget {
 }
 
 class _SingleArticleScreenState extends State<SingleArticleScreen> {
-  final ArticleController articleController = Get.find<ArticleController>();
+
   @override
   void initState() {
+    final ArticleController articleController = Get.find<ArticleController>();
     articleController.articleId = Get.arguments;
     articleController.fetchSingleArticleData();
     super.initState();

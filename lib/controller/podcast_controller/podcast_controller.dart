@@ -1,10 +1,11 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
 import 'dart:developer';
-
 import 'package:flutter_techblog/core/constants/api_url/api_urls.dart';
 import 'package:flutter_techblog/core/services/web_service.dart';
 import 'package:flutter_techblog/model/podcast_model/podcast_file_model.dart';
 import 'package:flutter_techblog/model/podcast_model/podcast_model.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:just_audio/just_audio.dart';
 
 class PodcastController extends GetxController{
 
@@ -13,6 +14,7 @@ class PodcastController extends GetxController{
   PodcastModel? podCast;
   PodcastFileModel currentPodcast = PodcastFileModel();
   List<PodcastFileModel> allPodcastFile = [];
+  late ConcatenatingAudioSource  playList;
 
 //================= functions ==================================================
 Future<void> getAllPodcastFile() async {
@@ -27,10 +29,20 @@ Future<void> getAllPodcastFile() async {
   if(response.statusCode == 200){
     for(var file in response.data["files"]){
       allPodcastFile.add(PodcastFileModel.fromJson(file));
+      playList.add(AudioSource.uri(Uri.parse(PodcastFileModel.fromJson(file).file!)));
     }
     isLoading = false;
     update();
   }
+}
+
+
+@override
+  void onInit() {
+    super.onInit();
+    playList = ConcatenatingAudioSource(
+        useLazyPreparation:  true,
+        children: []);
 }
 
 }

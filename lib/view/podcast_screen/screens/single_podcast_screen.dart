@@ -9,14 +9,25 @@ import '../../../core/constants/colors/app_colors.dart';
 import '../../../core/widget/tech_cached_image/tech_cached_image.dart';
 import '../widgets/podcast_episode_item.dart';
 
-class SinglePodcastScreen extends StatelessWidget {
-   SinglePodcastScreen({super.key}){
+class SinglePodcastScreen extends StatefulWidget {
+   const SinglePodcastScreen({super.key});
+
+  @override
+  State<SinglePodcastScreen> createState() => _SinglePodcastScreenState();
+}
+
+class _SinglePodcastScreenState extends State<SinglePodcastScreen> {
+
+
+  @override
+  void initState() {
     final PodcastController podcastController = Get.find<PodcastController>();
     // حذف فایل های پادکسیت صفحه قبلی
     podcastController.allPodcastFile.clear();
     // مقدار دهی و فراخوانی api
     podcastController.podCast = Get.arguments;
     podcastController.getAllPodcastFile();
+    super.initState();
   }
 
   @override
