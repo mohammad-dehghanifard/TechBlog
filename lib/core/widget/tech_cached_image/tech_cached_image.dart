@@ -12,6 +12,9 @@ class TechCachedImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: imageLink,
+      imageBuilder: (context, imageProvider) {
+        return Image(image: imageProvider,fit: BoxFit.fill,);
+      },
       fit: BoxFit.fill,
       placeholder: (context, url) => const ApplicationLoading(),
       errorWidget: (context, url, error) => Image.asset(Assets.images.singleimg.path),

@@ -12,7 +12,9 @@ import '../widgets/podcast_episode_item.dart';
 class SinglePodcastScreen extends StatelessWidget {
    SinglePodcastScreen({super.key}){
     final PodcastController podcastController = Get.find<PodcastController>();
+    // حذف فایل های پادکسیت صفحه قبلی
     podcastController.allPodcastFile.clear();
+    // مقدار دهی و فراخوانی api
     podcastController.podCast = Get.arguments;
     podcastController.getAllPodcastFile();
   }
@@ -38,7 +40,10 @@ class SinglePodcastScreen extends StatelessWidget {
                       child:  Stack(
                         children: [
                           // article poster
-                          Center(child: TechCachedImage(imageLink: buildController.podCast!.poster)),
+                          SizedBox(
+                              width: size.width,
+                              height: size.height / 3,
+                              child: TechCachedImage(imageLink: buildController.podCast!.poster)),
                           // gradiant
                           Container(
                             width: size.width,
