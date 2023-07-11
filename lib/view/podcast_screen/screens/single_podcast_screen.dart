@@ -20,13 +20,14 @@ class _SinglePodcastScreenState extends State<SinglePodcastScreen> {
 
 
   @override
-  void initState() {
+  void initState()  {
     final PodcastController podcastController = Get.find<PodcastController>();
     // حذف فایل های پادکسیت صفحه قبلی
     podcastController.allPodcastFile.clear();
     // مقدار دهی و فراخوانی api
     podcastController.podCast = Get.arguments;
     podcastController.getAllPodcastFile();
+    podcastController.player.setAudioSource(podcastController.playList,initialIndex: 0,initialPosition: Duration.zero);
     super.initState();
   }
 
@@ -131,7 +132,7 @@ class _SinglePodcastScreenState extends State<SinglePodcastScreen> {
                       ),
                     ),
                     // podcast controller
-                    const PodcastControllerWidget()
+                     const PodcastControllerWidget()
                   ],
                 ),
               );

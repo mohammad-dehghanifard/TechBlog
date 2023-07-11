@@ -11,9 +11,11 @@ class PodcastController extends GetxController{
 
 //================= variables ==================================================
   bool isLoading = false;
+  bool playState = false;
   PodcastModel? podCast;
   PodcastFileModel currentPodcast = PodcastFileModel();
   List<PodcastFileModel> allPodcastFile = [];
+  final AudioPlayer player = AudioPlayer();
   late ConcatenatingAudioSource  playList;
 
 //================= functions ==================================================
@@ -36,7 +38,12 @@ Future<void> getAllPodcastFile() async {
   }
 }
 
+  void getPlayState() {
+    playState = !playState;
+    update();
+  }
 
+//================= lifeCycle =================================================
 @override
   void onInit() {
     super.onInit();

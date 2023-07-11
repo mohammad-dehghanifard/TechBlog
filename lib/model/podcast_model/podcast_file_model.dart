@@ -1,3 +1,5 @@
+import 'package:flutter_techblog/core/constants/api_url/api_urls.dart';
+
 class PodcastFileModel{
   String? id;
   String? podcastId;
@@ -11,7 +13,7 @@ class PodcastFileModel{
   PodcastFileModel.fromJson(Map<String,dynamic> json){
     id = json["id"];
     podcastId = json["podcast_id"];
-    file = json["file"];
+    file = ApiUrls.baseWebSiteUrl + json["file"];
     title = json["title"];
     length = json["length"];
   }

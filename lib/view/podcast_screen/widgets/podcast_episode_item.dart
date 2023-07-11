@@ -20,7 +20,7 @@ class PodcastEpisodeItem extends StatelessWidget {
           width: size.width / 1.5,
             child: Text(file.title!,maxLines: 2,overflow: TextOverflow.ellipsis,style: ApplicationTextStyle.normalTextStyle)),
         const Expanded(child: SizedBox()),
-        Text(file.length!,style: ApplicationTextStyle.podcastDecorationTxtStyle)
+        Text("00 : ${file.length!}",style: ApplicationTextStyle.podcastDecorationTxtStyle)
 
       ],
     );
